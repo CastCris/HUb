@@ -1,0 +1,117 @@
+<!doctype html>
+<html>
+    <head>
+	    <meta charset="utf-8">
+	    <title>Boa tarde compatriotas!</title>
+		<!--Estiloso-->
+		<style>
+		    * {
+			    margin:0px;
+			    padding: 0px;
+			    font-family: 'Bebas Neue';
+			}
+			
+			main{
+			    width: 100%; 
+			    text-align: center;
+			    background: rgb(17,212,2);
+                background: linear-gradient(90deg, rgba(17,212,2,1) 0%, rgba(220,255,0,1) 51%, rgba(9,9,121,1) 91%);
+			    box-shadow: 0px -9px 5px 0px rgba(0,0,0,0.75);
+			}
+			
+			.ima{
+			    width: 100px;
+			    border-radius: 10px;
+			}
+			<!--Botão-->
+			#expandir{
+			    font-size: 22px;
+			    width: 150px;
+			    text-align: left;
+			    margin: 10px;
+			    height: 100px;
+			}
+			#ascesso{
+			    width: 80px;
+			    background-color: green;
+			    padding: 9px;
+			    border: 0px;
+				cursor:pointer;
+			}
+			#localb{
+			    padding: 5px;
+				display: block;
+			}
+			
+			header #ascesso:hover {
+			    transform: scale(1.2);
+			}
+		</style>
+		<!--fonts-->
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+	</head>
+	<body>
+	<header>
+	   <div style=" background-color: green; width:100%; text-align: center; padding: 10px; font-size: 40px;
+	   display: flex;">
+	        <!--Botaõ principal-->
+	        <div id="aumentar">
+			    <button id="ascesso" onclick="mais()">
+			        <img src="https://i.im.ge/2024/03/02/81bPby.Coat-of-arms-of-Brazil-svg.png"/ width="60px" alt="Brasão da pátria-mãe">
+			    </button>
+			</div>
+			<!--Botões de ascesso-->
+            <div id="localb">			
+	            <span id="expandir">
+			        <ul style="padding: 5px; width:150px; list-style-type: none;">
+			            <li>
+	                        <h3 style="font-size:25px;">
+	                        Para saber mais, clique em sua exalta foto
+			                <br>
+			                <a href="https://pt.wikipedia.org/wiki/Jair_Bolsonaro" target="_blank"><img src="https://classic.exame.com/wp-content/uploads/2022/05/JAIR-BOLSONARO.jpg?quality=70&strip=info&w=1024"/ class="ima"></a>
+	                        </h3>
+				        </li>
+				        <li>
+	                        <h3 style="font-size:25px;">
+	                            Petistas!
+	                        </h3>
+			                    <p style="font-size: 17px;">
+			                    Veja aqui os seus tipos e suas falsas crenças!<br>
+				                <img src="https://ac24horas.com/wp-content/uploads/2018/04/af450837-77f2-4511-9a7e-49defc11db8b-1000x600.jpg"/ class="ima" alt="Pestista 'felizes(?)'">
+			                </p>
+				        </li>
+			        </ul>	 
+	            </span>
+			</div>
+			<!--Fim de botões de ascesso-->
+			<!--Boa tarde-->
+	        <h1 style="width:100%; text-align: center;">
+	             Boa tarde <br>compatriotas!!!
+	        </h1>
+	   </div>
+	</header>
+	<main>
+	<br><br>
+	    <h1>
+	        <img src="https://c.tenor.com/irg7rJ7uxhwAAAAC/tenor.gif"/ width= 970px>
+	    </h1>
+        <br>		
+		<p style="font-size: 30px; ">
+		    Vídeo de um herói defendendo a pátria-mãe amada<br> <a href="https://youtu.be/PJOd8ZGKtXM?si=5h70gvHNuBxoRwI6" rel="">https://youtu.be/PJOd8ZGKtXM?si=5h70gvHNuBxoRwI6</a>
+		</p>
+	</main>
+	<script src="javascript.js">
+	    function mais(){
+		    var exp = document.getElementbyid(expandir);
+			var retr = document.getElementbyid()
+			
+			if(expandir.style.display=block){
+			exp.style.display="none"
+			}else{
+		    exp.style.display="block"
+		}
+	</script>
+	</body>
+</html>

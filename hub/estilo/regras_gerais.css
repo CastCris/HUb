@@ -1,0 +1,10 @@
+*{
+    margin: 0px;
+    list-style-type: none;
+    font-family: "Red Hat Display", serif;
+}
+
+main{
+    padding: 15px;
+    margin: 10px;
+}

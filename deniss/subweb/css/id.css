@@ -1,0 +1,55 @@
+/*Apoio :DDD*/
+#z{
+	border: 7px solid, #1f1f1f;
+	border-color: #1f1f1f;
+    font-size: 30px; 
+    border-radius: 10px;
+    background-color: #1f1f1f;
+    color: white;
+}
+header #z:hover{ 
+    border: 7px solid;
+	background-color: #e7e7e7;
+    border-color: #e7e7e7;
+    box-shadow: 0px 0px 24px 0px rgba(0,0,0,0.75);
+	color: #1f1f1f
+}
+/*Botão*/
+#bo{
+    font-family: "Playfair Display", serif;
+    font-size: 27px;
+    border: 0.2rem solid;
+    border-radius: 10px ;
+    padding: 10px;
+    cursor: pointer;
+	background-color: #e4e4e4;;
+    box-shadow: 0px 0px 23px 3px rgba(0,0,0,0.75);
+	width: 300px;
+	height: 150px;
+    margin: 10px;
+}
+#bo:hover{
+	background-color: #1f1f1f;
+	color: #e4e4e4;
+}
+#top{
+    width: auto;
+}
+#olhe{
+    border-radius: 10px;
+    display: none;
+    background-color: rgb(255, 200, 128);
+    padding: 10px;
+    width: auto;
+}
+#olhe1{
+    border-radius: 10px;
+    width: auto;
+    display: grid;
+    background-color: #ec2f2f;
+    color: white;
+    margin: 10px;
+}
+#ob{
+    font-size: 22px;
+}

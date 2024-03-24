@@ -1,0 +1,103 @@
+/*Class*/
+* {
+    margin: 0px;
+}
+header{
+    background-image: url('https://veja.abril.com.br/wp-content/uploads/2020/04/beatles.jpg?quality=90&strip=info&w=720&h=440&crop=1');
+    background-repeat: no-repeat;
+    background-position: 50% 20%;
+    position: relative;
+    background-size: cover;
+}
+main {
+    padding: 20px;
+}
+p{
+    font-size: 20px;
+}
+li{
+    padding: 5px;
+    font-size: 20px;
+}
+body img{
+    margin: 20px;
+    width: 400px; 
+    border-radius: 10px;
+}
+section h2{
+    text-align: center;
+    font-size: 30px;
+    padding: 10px;
+}
+#bloco ul{
+    margin: 20px;
+    list-style-type: none;
+    display: contents;
+}
+#bloco2 ul{
+    list-style-type: none;
+    display: block;
+}
+#bloco2 li{
+    display: flex;
+    justify-content: space-around;
+}
+li video{
+    width: 270px;
+    margin: 10px;
+    border-radius: 15px;
+}
+li h2{
+    font-size: 35px;
+}
+li a{
+    color: black;
+    
+}
+li div{
+    width: 280px;
+    text-align: center;
+    margin: 10px;
+}
+.T{
+    background-color: white;
+    width: 350px 
+}
+.titulo{
+    font-size: 60px;
+    padding: 20px;
+    color: #022140;
+}
+.dodo{
+    display: flex;
+    justify-content: space-around;
+}
+.pau {
+    box-shadow: 0px, 12px, 0px, rgb(0,75,0);
+    padding: 10px;
+    margin: 10px;
+    width: 500px;
+    justify-content: space-around;
+
+}
+.le{
+    display: grid;
+    justify-content: center;
+}
+/*Id*/
+#bloco{
+    box-shadow: 0px 0px 16px 0px rgba(0,0,0,0.75);
+    border-radius: 10px;
+    margin: 15px;
+    height: 1000px;
+}
+#bloco2{
+    box-shadow: 0px 0px 16px 0px rgba(0,0,0,0.75);
+    border-radius: 10px;
+    margin: 15px;
+    height: auto;
+    width: auto;
+}
+#conteudo{
+    padding: 25px
+}
