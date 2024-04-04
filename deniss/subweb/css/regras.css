@@ -1,12 +1,25 @@
 *{
     margin: 0px;
 }
-main{
-    padding: 22px;
-    background-color: rgb(239, 253, 255);
-    font-family: "Playfair Display", serif;
+body{
     background-color: #e7e7e7;
+}
+main{
+    font-family: "Playfair Display", serif;
+    display: flex;
+    justify-content:space-around;
+}
+
+img{
+    margin: 20px;
+    border-radius: 10px;
+}
+p{
+    font-family: 'Oswald';
 }
 a{
     color: white;    
+}
+s{
+    text-decoration: 2px line-through;
 }
