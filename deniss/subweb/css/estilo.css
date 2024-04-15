@@ -118,6 +118,7 @@
     font-size: 70px;
     padding-bottom: 10px;
     color: red;
+    position: relative;
 }
 /*Parte principal*/
 .mot{
@@ -156,43 +157,26 @@
     border-radius: 10px;
     display: flex;
 }
-/*irmão do geral1*/
+/*Neto do info, localizado no id.css*/
 .informacao{
-    background-color: red;
-    padding: 20px;
+    background-color: rgb(255, 182, 87);
     height: auto;
     border-radius: 10px;
 }
-/*Filho de informacao*/
+/*Filho neto*/
 .in_bo{
     padding: 20px;
     border: 0px;
     border-radius: 10px;
-    background-color: #ad0505;
+    background-color: #e4e4e4;
     display: flex;
     box-shadow: 0px 0px 17px 0px rgba(0,0,0,0.75);
 }
-.in_bo:hover{
-    cursor: pointer;
-}
-/*Irmão de in_bo*/
-.roda{
-    font-size: 40px;
-    animation: rodaroda;
-    animation-duration: 3s;
-    animation-iteration-count: 1;
-}
-@keyframes rodaroda {
-    from{
-        rotate: 0.0deg;
-    }
-    to{
-        rotate: 180deg;
-    }
-}
+
 /*Filho de informacao, filho do sub, localizado no id.css*/
 .pessoal{
     list-style-type: none;
+    font-size: 15px;
 }
 .pessoal li{
     padding-top: 3px;
