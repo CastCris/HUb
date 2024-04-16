@@ -1,0 +1,413 @@
+/*Variaveis*/
+:root {
+    --tran_b: background-color 1s, background-image 4s, color 1s;
+    --laran: rgb(255, 200, 128);
+}
+
+/*Mais sobre*/
+/*Botão*/
+#bo1 {
+    font-family: "Playfair Display", serif;
+    font-size: 27px;
+    border: 0.2rem solid;
+    border-radius: 10px;
+    padding: 10px;
+    cursor: pointer;
+    background-color: #e4e4e4;
+    box-shadow: 0px 0px 23px 3px rgba(0, 0, 0, 0.75);
+    width: 300px;
+    height: 150px;
+    margin: 10px;
+    transition: var(--tran_b);
+}
+
+#bo1:hover {
+    color: #e4e4e4;
+    background-color: #1f1f1f;
+    background-image: url('https://png.pngtree.com/png-clipart/20180518/ourmid/pngtree-instagram-icon-instagram-logo-png-image_3571406.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position-x: 50%;
+    background-position-y: 50%;
+}
+
+/*Bloqueador*/
+#tampa1 {
+    border-radius: 10px;
+    display: none;
+    height: 0px;
+    padding: 0px;
+    background-color: rgb(239, 253, 255);
+    animation-name: tamp11;
+    animation-duration: 4s;
+    animation-iteration-count: 1;
+}
+
+@keyframes tampa1 {
+    0% {
+        height: 753.562px;
+        padding: 40px;
+    }
+
+    50% {
+        height: 750px;
+        padding: 40px;
+    }
+
+    100% {
+        height: 0px;
+        padding: 0px;
+    }
+}
+
+@keyframes mostra1 {
+    from {
+        height: 0px;
+        padding: 0px;
+    }
+
+    to {
+        height: 1000px;
+        padding: 40px;
+    }
+}
+
+/*Texto*/
+#olhe {
+    border-radius: 10px;
+    display: none;
+    background-color: var(--laran);
+    padding: 10px;
+    width: auto;
+    height: 0px;
+    animation-name: expandir1;
+    animation-duration: 4s;
+    animation-iteration-count: 1;
+}
+
+@keyframes expandir1 {
+    0% {
+        height: 0px;
+        width: 0px;
+    }
+
+    50% {
+        height: 50px;
+        width: 354.010px;
+    }
+
+    100% {
+        height: 843.562px;
+    }
+}
+
+@keyframes retrair1 {
+    0% {
+        height: 1100px;
+        width: 424.023px;
+        padding: 10px;
+        display: grid;
+    }
+
+    100% {
+        height: 150px;
+        width: 0px;
+        padding: 0px;
+        display: none;
+    }
+}
+
+/*Textinho*/
+#ob1 {
+    display: block;
+    font-size: 17px;
+    width: 354.023px;
+}
+
+/*filho de ob1*/
+#locali {
+    margin-top: 10px;
+    display: none;
+}
+
+/*irmão do id localb1 e filho do sub, localizado no estilo.css*/
+#info {
+    display: block;
+    padding-left: 10px;
+    background-color: #e7e7e7;
+    animation-name: t;
+    animation-duration: 3s;
+    animation-iteration-count: 1;
+    animation-direction: o;
+    width: 350px ;
+}
+@keyframes tampar {
+    0%{width: 350px;}
+    100%{width: 255.896px;}
+}
+/*Filho do Info*/
+#info_sobre {
+    margin: 10px;
+}
+
+/*Filho do info_sobre*/
+#informacao_con {
+    padding: 0px;
+}
+
+/*Irmão do Info_sobre*/
+#info_localb {
+    display: none;
+    border: 0px;
+    animation-name: s;
+    animation-duration: 4s;
+    animation-iteration-count: 1;
+}
+
+@keyframes surgir {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes desa {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
+}
+
+/*filho do info_localb*/
+#in_bo {
+    transition: var(--tran_b);
+}
+
+#in_bo:hover {
+    background-color: #1f1f1f;
+    color: #b57f38;
+    background-image: url('https://upload.wikimedia.org/wikipedia/commons/d/de/Wikipedia_Logo_1.0.png');
+    background-size: 50% 100%;
+    background-repeat: no-repeat;
+    background-position-x: center;
+    background-position-y: center;
+    cursor: pointer;
+}
+/*filho de info_sobre*/
+#info_tudo{
+    display: flex;
+}
+/*Filho de info_tudo, localizado no estilo.css*/
+/*Vars para os ifos*/
+:root{
+    --pos: relative;
+    --ani: 2s;
+    --con: 1;
+}
+#info_mais {
+    display: none;
+    animation-name: q;
+    animation-duration: var(--ani);
+    animation-iteration-count: var(--con);
+    position: var(--pos);
+}
+#info_parti {
+    animation: d;
+    animation-duration: var(--ani);
+    animation-iteration-count: var(--con);
+    position: var(--pos);
+    margin: 0px;
+    padding: 0px;
+    width: 0px;
+    height: 0px;
+    opacity: 0;
+}
+/*esquerda*/
+@keyframes esq {
+    0%{
+        left: 0px;
+        opacity: 1;
+        font-size: 15px;
+    }100%{
+        left: -200px;
+        opacity: 0;
+        width: 0px;
+        height: 0px;
+        font-size: 5px;
+    }
+}
+/*esquerda para direita*/
+@keyframes esdir {
+    0%{
+        left: -200px;
+        opacity: 0;
+    }100%{
+        left: 0px;
+        opacity: 1;
+        width: auto;
+        height: auto;
+    }
+}
+@keyframes dir {
+    0%{
+        right: -200px;
+        opacity: 0;
+        padding: 0px;
+        width: 0px;
+        height: 0px;
+    }100%{
+        right: 0px;
+        opacity: 1;
+        width: auto;
+        height: auto;
+    }    
+}
+/*Filhos de info_mais*/
+#info_local_seta{
+    display: none;
+    justify-content: center;
+}
+/*Stinha direita*/
+:root{
+    --p: relative
+}
+#sd{
+    position: var(--p);
+}
+#sd img{
+    rotate: 90deg;
+    cursor: pointer;
+}
+/*Stinha esuqerda*/
+#se{
+    position: var(--p);
+}
+#se img{
+    rotate: -90deg;
+    cursor: pointer;
+}
+/*Irmão de in_bo*/
+#roda {
+    font-size: 40px;
+    animation: o;
+    animation-duration: 1.5s;
+    animation-iteration-count: 1;
+    rotate: 0deg;
+    transition: rotate;
+}
+
+/*0°*/
+@keyframes retorna {
+    from {
+        rotate: 180deg;
+    }
+
+    to {
+        rotate: 0deg;
+    }
+}
+
+/*180°*/
+@keyframes rodaroda {
+    from {
+        rotate: 0.0deg;
+    }
+
+    to {
+        rotate: 180deg;
+    }
+}
+/*Tampa_info, irmão de informacao_con*/
+#info_tampa{
+    background-color: red;
+    padding: 20px;
+}
+/*Carreira política*/
+/*Corpo do texto*/
+#bo2 {
+    font-family: "Playfair Display", serif;
+    font-size: 27px;
+    border: 0.2rem solid;
+    border-radius: 10px;
+    padding: 10px;
+    cursor: pointer;
+    background-color: #e4e4e4;
+    box-shadow: 0px 0px 23px 3px rgba(0, 0, 0, 0.75);
+    width: 300px;
+    height: 150px;
+    margin: 10px;
+    transition: background-image 4s, background-color 2s, color 1s;
+}
+
+#bo2:hover {
+    background-color: #1f1f1f;
+    color: #e4e4e4;
+    background-image: url('http://127.0.0.1:5500/subweb/img/laranja.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position-y: 50%;
+}
+
+/*Outros...*/
+#bo {
+    font-family: "Playfair Display", serif;
+    font-size: 27px;
+    border: 0.2rem solid;
+    border-radius: 10px;
+    padding: 10px;
+    cursor: pointer;
+    background-color: #e4e4e4;
+    ;
+    box-shadow: 0px 0px 23px 3px rgba(0, 0, 0, 0.75);
+    width: 300px;
+    height: 150px;
+    margin: 10px;
+    transition: background-image 4s, background-color 1s, color 1s;
+}
+
+#bo:hover {
+    background-color: #1f1f1f;
+    color: #e4e4e4;
+    background-image: url('');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+/*ul*/
+#conjunto {
+    width: 1000px;
+}
+
+/*filho do conunto ou uls(localizado no estilo.css*/
+/*Imagem*/
+#localb1 {
+    display: grid;
+}
+
+#localb2 {
+    display: grid;
+}
+
+#top {
+    width: auto;
+}
+
+#olhe1 {
+    border-radius: 10px;
+    width: auto;
+    display: none;
+    background-color: #ec2f2f;
+    color: white;
+    margin: 10px;
+}
+
+#ob {
+    display: block;
+    font-size: 14px;
+}

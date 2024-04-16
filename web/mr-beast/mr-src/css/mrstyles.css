@@ -1,0 +1,57 @@
+.a{
+    max-width: 1070px;
+    display:flex;
+    justify-items: center;
+}
+
+.b{
+    width: 600px;
+    font-family: 'kode mono', sans-serif;
+    font-size: 50px;
+    padding: 20px;
+    text-align: center;
+    height: 100px;
+}
+.b2{
+    background-color: aqua;
+}
+
+.coluna{
+    padding: 0px;
+    box-shadow: inset -10px -17px 5px 0px rgba(0,0,0,1);
+    background: rgb(2,0,36);
+background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(0,212,255,1) 0%, rgba(0,188,233,1) 56%, rgba(52,153,182,1) 69%, rgba(0,0,0,1) 100%);
+}
+
+.coluna2{
+    padding: 0px;
+    box-shadow: inset 10px -17px 5px 0px rgba(0,0,0,1);
+    background: rgb(0,0,0);
+    background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(2,0,36,1) 0%, rgba(52,153,182,1) 31%, rgba(0,188,233,1) 44%, rgba(0,212,255,1) 100%);
+}
+
+#helloMrb{
+    background: linear-gradient(to right, gray, blue);
+    padding: 5px 5px;
+    cursor: pointer;
+    border: 1px;
+    border-radius: 5px;
+    transition: background-color is ease;
+}
+
+#su{
+    height: 40px;
+    width: 100%;
+    border-radius: 7px;
+    cursor: pointer;
+}
+
+.conteudo{
+    font-size: 20px;
+}
+
+.h{
+    border: 3px solid aliceblue;
+    border-radius: 4px;
+    width: 70px;
+}

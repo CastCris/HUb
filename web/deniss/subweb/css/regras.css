@@ -1,0 +1,29 @@
+*{
+    margin: 0px;
+}
+body{
+    background-color: #e7e7e7;
+}
+main{
+    font-family: "Playfair Display", serif;
+    display: flex;
+    justify-content:space-around;
+}
+
+img{
+    margin: 20px;
+    border-radius: 10px;
+}
+p{
+    font-family: 'Oswald';
+}
+a{
+    color: white;    
+    text-decoration-line: none;
+}
+a:hover{
+    text-decoration-line:underline;
+}
+s{
+    text-decoration: 2px line-through;
+}
