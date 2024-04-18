@@ -6,15 +6,16 @@ while(r == 1):
     #valores de reinicialização
     re_conta = int(1)
     #valores para a conta
-    z = float(0)
+    ze = float(0)
     e = 1
     contador = e
     #número
     n1 = 0
     #totais
-    #Ativador
-    ativador = int(0)
-    tot1 = z
+    totz = float(0)
+    tot1 = float(0)
+    #Ciclo
+    final_ciclo = 0
     while(re_conta == 1):
         conta = 1
         n_ant1 = float(0)
@@ -27,33 +28,17 @@ while(r == 1):
                 n1 = n1
             #número de armazenamento
             n_ant1 = n1
-            print("Valor total:" ,z)
+            print("Valor total:", ze)
             #operação
-            def operar(o, n):
-                #Valores
-                #N antigo
-                n_ant = float(0)
-                #Marcador de ida
-                def marcar():
-                    if(o == "+"):
-                        return 1
-                    elif(o == "-"):
-                        return 2
-                    elif(o == "*"):
-                        return 3
-                    elif(o == "/"):
-                        return 4
-                if(e>1):
-                    print(m)
-                #Opções para desenvolvedor
-                if(o == "z"):
-                    print(z)
+            def operar(z):
+                #Ignição
+                while(e<2):
+                    o = str(input(""))
+                    n = float(input(""))
                 #Operações
-                if(o == "+") or (o == "-") or (o =="*") or (o == "/"):
-                    if(e<2):
+                    if(o == "+") or (o == "-") or (o =="*") or (o == "/"):
                         #Soma
                         if(o == "+"):
-                            m = marcar()
                             return n_ant1 + n
                         #Subtração
                         elif(o == "-"):
@@ -62,62 +47,39 @@ while(r == 1):
                         #positiva
                         elif(o == "*"):
                             return n * n_ant1
-                    elif(e>=2):
+                    else:
+                        return
+                while(e>=2):
+                    ciclo = 1
+                    o = str(input(""))
+                    if(o != "*"):
+                        n = float(input(""))                    
+                        if(n != None):
+                            n_ant = n
+                            o_ant = o
+                    else:
+                        o_ant = "*"
+                    print("Op. ant:", o_ant)
+                    if(o == "+") or (o == "-") or (o == "*") or (o == "/"):
                         #Soma
                         if(o == "+"):
-                            while(n_ant == 0):
-                                n_ant = n
-                                if(n_ant != 0):
-                                    return n_ant + z
+                            n_ant = n
+                            return n_ant + z
                         #Subtração
-                        if(o == "-"):
-                            while(n_ant == 0):
-                                n_ant = n
-                                if(n_ant != 0):
-                                    return z - n_ant
-                        #Multiplicaçãp
-                        if(o == "*"):
-                            if(o_ant == "+") or (o_ant == "-") and (e == 2):
-                                n_ant = 0
-                                if(o_ant == "+"):
-                                    while(n_ant == 0):
-                                        n_ant = n
-                                        print("1")
-                                        if(n_ant != 0):
-                                            o_ant = "*"
-                                            return (z-n_ant1) + (n_ant1*n_ant)
-                                elif(o_ant == "-"):
-                                    while(n_ant == 0):
-                                        n_ant = n
-                                        if(n_ant != 0):
-                                            return (z+n_ant1) - (n_ant1*n_ant)
-                                elif(o_ant == "*"):
-                                    while(n_ant == 0):
-                                        n_ant = n
-                                        print(n_ant)
-                                        if(n_ant != 0):
-                                            return z*n_ant
-                else:
-                    return armazenador_cons
-            z = operar(str(input("")) ,float(input("")))
-            #O antigo
-            def operar_antigo(o_ant):
-                if(m == 1):
-                    return "+"
-                elif(m == 2):
-                    return "-"
-                elif(m == 3):
-                    return "*"
-                elif(m == 4):
-                    return "/"
-            o_ant = operar_antigo(str())
-            print(o_ant)
-            if(e>1):
-                print(o_ant)
-            armazenador_cons = z
-            contador = e-1
+                        elif(o == "-"):
+                            n_ant = n
+                            return z - n_ant
+                        elif(o == "*"):
+                            if(o_ant == "*"):
+                                n = float(input(""))
+                                return ze*n
+                            else:
+                                print("FOI!!")
+                    else:
+                        return 
+            ze = operar(float())
             e = e+1
-        tot1 = z + tot1
+        totz = ze+totz
     if(final == 1):
         print("Obrigado por utilizar a calculadora maluca!", "\n", "O resultado de sua expressão foi:", z,"\n", "Caso queira fazer outra continha digite 'r'")
         o = str(input(""))
