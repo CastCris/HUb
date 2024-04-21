@@ -765,13 +765,15 @@ while (reniciar != 1):
                             armazenador_x = x
                             print(armazenador_x)
                 ciclo = ciclo+1
-                # #Executador de multiplas ondas
+                #Executador de multiplas ondas
                 # while(depois == 0):
                 #     def dep():
                 #             if(section_ciclo == 1):
                 #                 if(ciclo_1_1 == 1):
                 #                     if(quant_dej_dir_1_2 != 0):
-                #                         ciclo_1_1
+                #                         ciclo_1_1 = 0
+                #                         ciclo_1_2 = 1
+
                 if(section_ciclo == 1):
                     #1
                     if(repetidor<=repet_ciclo_1_1) and (depois == 1):
@@ -790,7 +792,7 @@ while (reniciar != 1):
                     #2
                     elif(repetidor<=repet_ciclo_1_2) and (depois == 2):
                         if(modo_ds == 1):
-                            print("Certo2", "R2", repet_ciclo_1_2, "Rep", repetidor, "\n","Q",     quant_dej_dir_1_2)
+                            print("Certo2", "R2", repet_ciclo_1_2, "Rep", repetidor, "\n""Q",      quant_dej_dir_1_2)
                         repetidor = repetidor+1
                         if(repetidor == repet_ciclo_1_2):
                             if(quant_dej_dir_1_3 != 0):
@@ -857,3 +859,13 @@ while (reniciar != 1):
         print("V", vezes)
         print("O", onda)
         text = 1
+#Coisas para mexer aqui:
+#1- Espaçamento, instável
+#2- Criar padrões com utilizando as section_ciclos
+#3- Criar outros tipos de ondas:
+#   Divisão
+#   Subtração
+#   Raízes
+#   Adição
+#   Exponenciação
+#4 Integra cálculo as ondas
