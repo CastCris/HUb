@@ -34,16 +34,26 @@ quant_dej_dir_1_4 = 0
 quant_dej_dir_1_5 = 0
 quant_dej_dir_1_6 = 0
 #Largura
+#Prohressiva
 rigth_armazenada_1_1 = 40
 rigth_armazenada_1_2 = 0
 rigth_armazenada_1_3 = 0
 rigth_armazenada_1_4 = 0
 rigth_armazenada_1_5 = 0
 rigth_armazenada_1_6 = 0
+#Inicial
+r_init_armazenada_1_1 = 1
+r_init_armazenada_1_2 = 0
+r_init_armazenada_1_3 = 0
+r_init_armazenada_1_4 = 0
+r_init_armazenada_1_5 = 0
+r_init_armazenada_1_6 = 0
+#Proporcional|Não porporcional
+r_init_pro_ro = 1
 #Espaçamento
 esp_des_1_1 = 2
 esp_des_1_2 = 0
-esp_des_1_3 = 6
+esp_des_1_3 = 0
 esp_des_1_4 = 0
 esp_des_1_5 = 0
 esp_des_1_6 = 0
@@ -82,8 +92,6 @@ n_di = int(10)# número divisor
 armazenador_x = int(1)#Armazenador do x
 n_flutuante = int(0)
 n_flutuante_exibir = n_flutuante
-#Vezes que o resto_pro repete
-multpli = int(1)
 #Quantidade
 quant = int(1)
 #Quantidade desejada
@@ -98,6 +106,7 @@ rigth_desj = int(1)#direita desejada
 esp = int(1)
 esp_des = int(1)
 contagem_esp = int(0)#contagem esp
+contagem_esp_armazenamento = int(0)
 #Suava|Robusto
 pro_ro = 1#geral
 pro_ro_exibir = pro_ro
@@ -118,6 +127,8 @@ vezes = 0
 #Configurações
 exibir_instrucoes = 1
 configuracoes = 0
+#Marcador
+marcador_1 = 0
 while (reniciar != 1):
     #Repetidor
     while(onda == 1):
@@ -239,7 +250,7 @@ while (reniciar != 1):
                         ciclo_1_5 = 0
                         ciclo_1_6 = 2
                 #Repetidor
-                elif(comecar == "o -rep") or (comecar == "O -rep"):
+                elif(comecar == "o r") or (comecar == "O r"):
                     print("Repetido da Onda:", o_atual, "Seção", section_ciclo)
                     if(ciclo_1_1 == 2):
                         repet_ciclo_1_1 = int(input(""))
@@ -260,26 +271,32 @@ while (reniciar != 1):
                         #1
                         if(escolha_onda_remover == 1):
                             quant_dej_dir_1_1 = 0
+                            repet_ciclo_1_1 = 0
                             remover_1 = 1
                         #2
                         elif(escolha_onda_remover == 2):
                             quant_dej_dir_1_2 = 0
+                            repet_ciclo_1_2 = 0
                             remover_1 = 2
                         #3
                         elif(escolha_onda_remover == 3):
                             quant_dej_dir_1_3 = 0
+                            repet_ciclo_1_3 = 0
                             remover_1 = 3
                         #4
                         elif(escolha_onda_remover == 4):
                             quant_dej_dir_1_4 = 0
+                            repet_ciclo_1_4 = 0
                             remover_1 = 4
                         #5
                         elif(escolha_onda_remover == 5):
                             quant_dej_dir_1_5 = 0
+                            repet_ciclo_1_5 = 0
                             remover_1 = 5
                         #6
                         elif(escolha_onda_remover == 6):
                             quant_dej_dir_1_6 = 0
+                            repet_ciclo_1_6 = 0
                             remover_1 = 6
                 #Comprimenoto
                 elif(comecar == "T") or (comecar == "t"):
@@ -452,47 +469,49 @@ while (reniciar != 1):
                 elif(comecar == "L") or (comecar == "l"):
                     print("Lista das configurações da onda atual:")
                     if(section_ciclo == 1):
-                        print("Seção 1")
+                        print("\n", "==============","\n","Seção 1")
                         #1
                         if(ciclo_1_1 != 0):
-                            print("\n","Onda 1", "\n", "Tamanho:", quant_dej_dir_1_1, "\n","Altura:", rigth_armazenada_1_1, "\n", "Espaçamento:", esp_des_1_1, "\n", "Fatores:", "\n", "1:", fator1_1_1, "\n","2", fator2_1_1, "\n", "Divisor:", di_1_1, "\n", "Suavidade:", sua_1_1, "\n", "Repetição:", repet_ciclo_1_1)
+                            print("Onda 1", "\n", "Tamanho:", quant_dej_dir_1_1, "\n","Altura:", rigth_armazenada_1_1,"\n", "Altura inicial:", r_init_armazenada_1_1, "\n", "Espaçamento:", esp_des_1_1, "\n", "Fatores:", "\n", "1:", fator1_1_1, "\n","2", fator2_1_1, "\n", "Divisor:", di_1_1, "\n", "Suavidade:", sua_1_1, "\n", "Repetição:", repet_ciclo_1_1)
                         #2
                         elif(ciclo_1_2 != 0):
-                            print("\n","Onda 2", "\n", "Tamanho:", quant_dej_dir_1_2, "\n","Altura:", rigth_armazenada_1_2, "\n", "Espaçamento:", esp_des_1_2, "\n", "Fatores:", "\n", "1:", fator1_1_2, "\n","2", fator2_1_2, "\n", "Divisor:", di_1_2, "\n", "Suavidade:", sua_1_2, "\n", "Repetição:", repet_ciclo_1_2)
+                            print("Onda 2", "\n", "Tamanho:", quant_dej_dir_1_2, "\n","Altura:", rigth_armazenada_1_2,"\n", "Altura inicial:", r_init_armazenada_1_2, "\n", "Espaçamento:", esp_des_1_2, "\n", "Fatores:", "\n", "1:", fator1_1_2, "\n","2", fator2_1_2, "\n", "Divisor:", di_1_2, "\n", "Suavidade:", sua_1_2, "\n", "Repetição:", repet_ciclo_1_2)
                         #3
                         elif(ciclo_1_3 != 0):
-                            print("\n","Onda 3", "\n", "Tamanho:", quant_dej_dir_1_3, "\n","Altura:", rigth_armazenada_1_3, "\n", "Espaçamento:", esp_des_1_3, "\n", "Fatores:", "\n", "1:", fator1_1_3, "\n","2", fator2_1_3, "\n", "Divisor:", di_1_3, "\n", "Suavidade:", sua_1_3, "\n", "Repetição:", repet_ciclo_1_3)
+                            print("Onda 3", "\n", "Tamanho:", quant_dej_dir_1_3, "\n","Altura:", rigth_armazenada_1_3, "\n", "Altura inicial:", r_init_armazenada_1_3, "\n", "Espaçamento:", esp_des_1_3, "\n", "Fatores:", "\n", "1:", fator1_1_3, "\n","2", fator2_1_3, "\n", "Divisor:", di_1_3, "\n", "Suavidade:", sua_1_3, "\n", "Repetição:", repet_ciclo_1_3)
                         #4
                         elif(ciclo_1_4 != 0):
-                            print("\n","Onda 4", "\n", "Tamanho:", quant_dej_dir_1_4, "\n","Altura:", rigth_armazenada_1_4, "\n", "Espaçamento:", esp_des_1_4, "\n", "Fatores:", "\n", "1:", fator1_1_4, "\n","2", fator2_1_4, "\n", "Divisor:", di_1_4, "\n", "Suavidade:", sua_1_4, "\n", "Repetição:", repet_ciclo_1_4)
+                            print("Onda 4", "\n", "Tamanho:", quant_dej_dir_1_4, "\n","Altura:", rigth_armazenada_1_4,"\n", "Altura inicial:", r_init_armazenada_1_4, "\n", "Espaçamento:", esp_des_1_4, "\n", "Fatores:", "\n", "1:", fator1_1_4, "\n","2", fator2_1_4, "\n", "Divisor:", di_1_4, "\n", "Suavidade:", sua_1_4, "\n", "Repetição:", repet_ciclo_1_4)
                         #5
                         elif(ciclo_1_5 != 0):
-                            print("\n","Onda 5", "\n", "Tamanho:", quant_dej_dir_1_5, "\n","Altura:", rigth_armazenada_1_5, "\n", "Espaçamento:", esp_des_1_5, "\n", "Fatores:", "\n", "1:", fator1_1_5, "\n","2", fator2_1_5, "\n", "Divisor:", di_1_5, "\n", "Suavidade:", sua_1_5, "\n", "Repetição:", repet_ciclo_1_5)
+                            print("Onda 5", "\n", "Tamanho:", quant_dej_dir_1_5, "\n","Altura:", rigth_armazenada_1_5,"\n", "Altura inicial:", r_init_armazenada_1_5 ,"\n", "Espaçamento:", esp_des_1_5, "\n", "Fatores:", "\n", "1:", fator1_1_5, "\n","2", fator2_1_5, "\n", "Divisor:", di_1_5, "\n", "Suavidade:", sua_1_5, "\n", "Repetição:", repet_ciclo_1_5)
                         #6
                         elif(ciclo_1_6 != 0):
-                            print("\n","Onda 6", "\n", "Tamanho:", quant_dej_dir_1_6, "\n","Altura:", rigth_armazenada_1_6, "\n", "Espaçamento:", esp_des_1_6, "\n", "Fatores:", "\n", "1:", fator1_1_6, "\n","2", fator2_1_6, "\n", "Divisor:", di_1_6, "\n", "Suavidade:", sua_1_6, "\n", "Repetição:", repet_ciclo_1_6)
-                        print("\n")
+                            print("Onda 6", "\n", "Tamanho:", quant_dej_dir_1_6, "\n","Altura:", rigth_armazenada_1_6,"\n", "Altura inicial:", r_init_armazenada_1_6,"\n", "Espaçamento:", esp_des_1_6, "\n", "Fatores:", "\n", "1:", fator1_1_6, "\n","2", fator2_1_6, "\n", "Divisor:", di_1_6, "\n", "Suavidade:", sua_1_6, "\n", "Repetição:", repet_ciclo_1_6)
+                        print("==============", "\n")
                 #Geral
-                elif(comecar == "L g") or (comecar == "l g"):
+                elif(comecar == "Lg") or (comecar == "lg"):
                     if(section_ciclo == 1):
+                        print("\n", "==============","\n","Seção 1")
                         #1
                         if(quant_dej_dir_1_1 != 0):
-                            print("\n","Onda 1", "\n", "Tamanho:", quant_dej_dir_1_1, "\n","Altura:", rigth_armazenada_1_1, "\n", "Espaçamento:", esp_des_1_1, "\n", "Fatores:", "\n", "1:", fator1_1_1, "\n","2", fator2_1_1, "\n", "Divisor:", di_1_1, "\n", "Suavidade:", sua_1_1, "\n", "Repetição:", repet_ciclo_1_1)
+                            print("Onda 1", "\n", "Tamanho:", quant_dej_dir_1_1, "\n""Altura:",    rigth_armazenada_1_1,"\n", "Altura inicial:",r_init_armazenada_1_1,   "\n", "Espaçamento:", esp_des_1_1, "\n","Fatores:", "\n", "1:",  fator1_1_1, "\n","2", fator2_1_1, "\n","Divisor:", di_1_1, "\n",    "Suavidade:", sua_1_1, "\n","Repetição:", repet_ciclo_1_1)
                         #2
                         if(quant_dej_dir_1_2 != 0):
-                            print("\n" ,"Onda 2", "\n", "Tamanho:", quant_dej_dir_1_2, "\n","Altura:", rigth_armazenada_1_2, "\n", "Espaçamento:", esp_des_1_2, "\n", "Fatores:", "\n", "1:", fator1_1_2, "\n","2", fator2_1_2, "\n", "Divisor:", di_1_2, "\n", "Suavidade:", sua_1_2, "\n", "Repetição:", repet_ciclo_1_2)
+                            print("Onda 2", "\n", "Tamanho:", quant_dej_dir_1_2, "\n""Altura:",    rigth_armazenada_1_2,"\n", "Altura inicial:",r_init_armazenada_1_2,   "\n", "Espaçamento:", esp_des_1_2, "\n","Fatores:", "\n", "1:",  fator1_1_2, "\n","2", fator2_1_2, "\n","Divisor:", di_1_2, "\n",    "Suavidade:", sua_1_2, "\n","Repetição:", repet_ciclo_1_2)
                         #3
                         if(quant_dej_dir_1_3 != 0):
-                            print("\n" ,"Onda 3", "\n", "Tamanho:", quant_dej_dir_1_3, "\n","Altura:", rigth_armazenada_1_3, "\n", "Espaçamento:", esp_des_1_3, "\n", "Fatores:", "\n", "1:", fator1_1_3, "\n","2", fator2_1_3, "\n", "Divisor:", di_1_3, "\n", "Suavidade:", sua_1_3, "\n", "Repetição:", repet_ciclo_1_3)
+                            print("Onda 3", "\n", "Tamanho:", quant_dej_dir_1_3, "\n""Altura:",    rigth_armazenada_1_3, "\n", "Altura inicial:",r_init_armazenada_1_3,  "\n", "Espaçamento:", esp_des_1_3, "\n","Fatores:", "\n", "1:",     fator1_1_3, "\n","2", fator2_1_3, "\n","Divisor:", di_1_3, "\n",   "Suavidade:", sua_1_3, "\n","Repetição:", repet_ciclo_1_3)
                         #4
                         if(quant_dej_dir_1_4 != 0):
-                            print("\n" ,"Onda 4", "\n", "Tamanho:", quant_dej_dir_1_4, "\n","Altura:", rigth_armazenada_1_4, "\n", "Espaçamento:", esp_des_1_4, "\n", "Fatores:", "\n", "1:", fator1_1_4, "\n","2", fator2_1_4, "\n", "Divisor:", di_1_4, "\n", "Suavidade:", sua_1_4, "\n", "Repetição:", repet_ciclo_1_4)
+                            print("Onda 4", "\n", "Tamanho:", quant_dej_dir_1_4, "\n""Altura:",    rigth_armazenada_1_4,"\n", "Altura inicial:",r_init_armazenada_1_4,   "\n", "Espaçamento:", esp_des_1_4, "\n","Fatores:", "\n", "1:",  fator1_1_4, "\n","2", fator2_1_4, "\n","Divisor:", di_1_4, "\n",    "Suavidade:", sua_1_4, "\n","Repetição:", repet_ciclo_1_4)
                         #5
                         if(quant_dej_dir_1_5 != 0):
-                            print("\n" ,"Onda 5", "\n", "Tamanho:", quant_dej_dir_1_5, "\n","Altura:", rigth_armazenada_1_5, "\n", "Espaçamento:", esp_des_1_5, "\n", "Fatores:", "\n", "1:", fator1_1_5, "\n","2", fator2_1_5, "\n", "Divisor:", di_1_5, "\n", "Suavidade:", sua_1_5, "\n", "Repetição:", repet_ciclo_1_5)
+                            print("Onda 5", "\n", "Tamanho:", quant_dej_dir_1_5, "\n""Altura:",    rigth_armazenada_1_5,"\n", "Altura inicial:",r_init_armazenada_1_5 ,  "\n", "Espaçamento:", esp_des_1_5, "\n","Fatores:", "\n", "1:",  fator1_1_5, "\n","2", fator2_1_5, "\n","Divisor:", di_1_5, "\n",    "Suavidade:", sua_1_5, "\n","Repetição:", repet_ciclo_1_5)
                         #6
                         if(quant_dej_dir_1_6 != 0):
-                            print("\n" ,"Onda 6", "\n", "Tamanho:", quant_dej_dir_1_6, "\n","Altura:", rigth_armazenada_1_6, "\n", "Espaçamento:", esp_des_1_6, "\n", "Fatores:", "\n", "1:", fator1_1_6, "\n","2", fator2_1_6, "\n", "Divisor:", di_1_6, "\n", "Suavidade:", sua_1_6, "\n", "Repetição:", repet_ciclo_1_6)
+                            print("Onda 6", "\n", "Tamanho:", quant_dej_dir_1_6, "\n""Altura:",    rigth_armazenada_1_6,"\n", "Altura inicial:",r_init_armazenada_1_6,   "\n", "Espaçamento:", esp_des_1_6, "\n","Fatores:", "\n", "1:",   fator1_1_6, "\n","2", fator2_1_6, "\n","Divisor:", di_1_6, "\n",     "Suavidade:", sua_1_6, "\n","Repetição:", repet_ciclo_1_6)
+                        print("==============", "\n")
                 #Dúvida
                 elif(comecar == "?"):
                     print("Seção:", section_ciclo, "Onda:", o_atual)
@@ -513,7 +532,23 @@ while (reniciar != 1):
                     configuracoes = 2
                 #Modo DS
                 elif(comecar == "ds") or (comecar == "Ds"):
+                    print("Como você descobriu aqui !!!???")
                     modo_ds = int(input(""))
+                #Altura Inicial
+                elif(comecar == "ai") or (comecar == "Ai") or (comecar == "AI!"):
+                    print("Digite a altura inicicial de sua onda")
+                    if(ciclo_1_1 == 2):
+                        r_init_armazenada_1_1 = int(input(""))
+                    elif(ciclo_1_2 == 2):
+                        r_init_armazenada_1_2 = int(input(""))
+                    elif(ciclo_1_3 == 2):
+                        r_init_armazenada_1_3 = int(input(""))
+                    elif(ciclo_1_4 == 2):
+                        r_init_armazenada_1_4 = int(input(""))
+                    elif(ciclo_1_5 == 2):
+                        r_init_armazenada_1_5 = int(input(""))
+                    elif(ciclo_1_6 == 2):
+                        r_init_armazenada_1_6 = int(input(""))
                 #Erro
                 else:
                     print("Inválido, tente novamente")
@@ -524,7 +559,8 @@ while (reniciar != 1):
         if(comecar == "C") or (comecar == "c"):            
             ciclo = 0
             while(ciclo<ciclo_des):
-                depois = 0
+                depois = 1
+                contagem_esp_armazenamento = 0
                 #Comprimento
                 def onda_quant(quant):
                     if( section_ciclo == 1):
@@ -542,6 +578,7 @@ while (reniciar != 1):
                             return quant_dej_dir_1_5
                 quant_armazenada = onda_quant(int())
                 #Largura
+                #Absoluta
                 def onda_d(d):
                     if(section_ciclo == 1):
                         if(ciclo_1_1 == 1):
@@ -557,6 +594,21 @@ while (reniciar != 1):
                         elif(ciclo_1_6 == 1):
                             return rigth_armazenada_1_6
                 rigth_armazenada = onda_d(int())
+                #Relativa(?)
+                def onda_d_inicial(di):
+                    if(ciclo_1_1 == 1):
+                        return r_init_armazenada_1_1
+                    elif(ciclo_1_2 == 1):
+                        return r_init_armazenada_1_2
+                    elif(ciclo_1_3 == 1):
+                        return r_init_armazenada_1_3
+                    elif(ciclo_1_4 == 1):
+                        return r_init_armazenada_1_4
+                    elif(ciclo_1_5 == 1):
+                        return r_init_armazenada_1_5
+                    elif(ciclo_1_6 == 1):
+                        return r_init_armazenada_1_6
+                rigth_inicial_armazenada = onda_d_inicial(int())
                 #Espaçamento
                 def onda_esp(esp):
                     if( section_ciclo == 1):
@@ -654,15 +706,26 @@ while (reniciar != 1):
                 #Comprimento
                 quant_dej_dir = quant_armazenada
                 #Largura
+                #Progressiva
                 rigth_desj = rigth_armazenada
+                #Cortada
+                rigth_inical = rigth_inicial_armazenada
                 #Espaçamento
                 esp_des = esp_armazenado
                 #Fatores
                 fator1 = fator1_armazenado
                 fator2 = fator2_armazenado
+                #Suavidade
+                pro_ro = pro_ro_armazenamento
                 contagem_esp = 0
                 quant = 0
                 rigth = 0
+                rigth_tot = 9
+                #X
+                X = fator1_armazenado
+                #Armazenadores
+                armazenador_x = 1
+                armazenador_x_2 = 0
                 #Sequência
                 #Coração do sistema
                 while(quant < quant_dej_dir):
@@ -696,84 +759,97 @@ while (reniciar != 1):
                         #Proporção pequena
                         else:
                             resto_prop = proporcao
-                            if(modo_ds == 1):
-                                print("P", proporcao ,"Res", resto_prop)
                             proporcao = int(1)
-                            while(resto_prop<1):
-                                resto_prop = resto_prop+resto_prop
-                                multpli = multpli+1
-                                if(resto_prop>=1):
-                                    esp_des = esp_des*multpli
-                                    #Aproximação
-                                    aproxi_esp_dej_b_di = int(esp_des)#Menos
-                                    aproxi_esp_dej_a_di = int(esp_des)+1#Mais
-                                    if(aproxi_esp_dej_a_di -esp_des<esp_des-aproxi_esp_dej_b_di):
-                                        esp = aproxi_esp_dej_a_di
-                                    elif(esp_des-aproxi_esp_dej_b_di<aproxi_esp_dej_a_di-esp_des):
-                                        esp=aproxi_esp_dej_b_di
-                                    else:
-                                        esp_des = int(esp_des)
-                                    if(modo_ds == 1):
-                                        print("esp_des",esp_des)
+                            resto = 1/resto_prop
+                            esp_des = esp_des*resto
+                            if(esp_des - int(esp_des) >=5):
+                                esp_des = esp_des+1
+                            else:
+                                esp_des = int(esp_des)
+                            if(modo_ds == 1):
+                                print("P", proporcao ,"Res", resto, "Esp", esp_des)
+                    #Para proporção grande
                     if(rigth_armazenada>quant_dej_dir):
                         rigth_desj = quant_dej_dir
+                    #Para proporção pequena
+                    elif(quant_armazenada>rigth_armazenada):
+                        quant_dej_dir = rigth_armazenada
+                    #Valor inicial da altura
+                    if(rigth_inical != 1):
+                        fator21 = fator2
+                    else:
+                        fator21 = 1
+                    #Altura total
+                    rigth_tot = fator1*(fator2**rigth_armazenada)
+                    print("RT:", rigth_tot)
                     #Ondas
                     while(rigth <= rigth_desj) or (quant <= quant_dej_dir):
+                        #X futuro
+                        armazenador_x_fut = (fator1*fator21**rigth_inical)*(fator2**((rigth+1)*proporcao))
+                        print("ARF:", armazenador_x_fut)
                         #Inicializador
-                        if(quant == 0):
+                        if(quant<=0) and (rigth_inical == 1):
                             print(int(fator1))
                         #Ondinhas
                         def ondas(x):
                             if(proporcao>=1):
-                                return x*((fator2**rigth)**proporcao)
-                        x = ondas(fator1)
-                        armazenador_x = x
-                        #Suave
-                        if(pro_ro == 1) or (pro_ro_di == 1):
-                            if(quant % esp_des == 0) and (quant!= 0) or (quant!= quant_dej_dir-1):
-                                contagem_esp = esp+contagem_esp
-                                esp = 0
-                                while(esp <= esp_des):
-                                    esp = esp+1
+                                if(rigth_desj>=rigth) and (armazenador_x_fut<=rigth_tot):
                                     if(modo_ds == 1):
-                                        print("Q", quant, "E", contagem_esp, x)
+                                        print("RD!")
+                                    return (x*fator21**rigth_inical)*(fator2**(rigth*proporcao))
+                                elif(rigth_desj<=rigth):
+                                    if(modo_ds == 1):
+                                        print("RD2", rigth_desj)
+                                    return armazenador_x_2
+                                elif(armazenador_x_fut>=rigth_tot):
+                                    if(modo_ds == 1):
+                                        print("RT")
+                                    return rigth_tot
+                        X = ondas(fator1)
+                        if(X != None):
+                            armazenador_x = X
+                        armazenador_x_2 = armazenador_x
+                        #Exibirdores
+                        #Suave
+                        if(pro_ro == 1):
+                            if(quant % esp_des == 0) and (quant!= 0) or (quant!= quant_dej_dir-1):
+                                esp = 0
+                                while(esp < esp_des):
+                                    contagem_esp = 0
+                                    if(modo_ds == 1):
+                                        print("Q", quant, "E", contagem_esp_armazenamento, X,  "\n", "Suave, sim")
                                     else:
-                                        print(x)
+                                        print(X)
+                                    contagem_esp = 1
+                                    contagem_esp_armazenamento = contagem_esp+contagem_esp_armazenamento
+                                    esp = esp+1
                             else:
                                 if(modo_ds == 1):
-                                    print("Q", quant ,x)
+                                    print("Q", quant, X, "\n", "Suave, não")
                                 else:
-                                    print(x)
+                                    print(X)
                         #Caótico
                         elif(pro_ro == 0):
                             if(quant % esp_des == 0) and (quant != 0):
                                 esp = 0
-                                while(esp <= esp_des):
+                                while(esp < esp_des):
                                     if(modo_ds == 1):
-                                        print("Q", quant, "E", esp ,x, )
+                                        print("Q", quant, "E", esp, X, "Não suave sim")
                                     else:
-                                        print(x)
+                                        print(X)
                                     esp = esp+1
                             else:
                                 if(modo_ds == 1):
-                                    print("Q", quant, x)
+                                    print("Q", quant, X, "Não suave não")
                                 else:
-                                    print(x)
-                        rigth = rigth+1
+                                    print(X)
+                            rigth = rigth+1
                         quant = quant+1
+                        rigth = rigth+1
                         if(rigth >= rigth_desj):
-                            armazenador_x = x
-                            print(armazenador_x)
+                            armazenador_x = X
+                            # print(armazenador_x)
                 ciclo = ciclo+1
-                #Executador de multiplas ondas
-                # while(depois == 0):
-                #     def dep():
-                #             if(section_ciclo == 1):
-                #                 if(ciclo_1_1 == 1):
-                #                     if(quant_dej_dir_1_2 != 0):
-                #                         ciclo_1_1 = 0
-                #                         ciclo_1_2 = 1
-
                 if(section_ciclo == 1):
                     #1
                     if(repetidor<=repet_ciclo_1_1) and (depois == 1):
@@ -782,7 +858,8 @@ while (reniciar != 1):
                         repetidor = repetidor+1
                         if(repetidor == repet_ciclo_1_1):
                             if(quant_dej_dir_1_2 != 0):
-                                print("1/2", "Rep", repetidor)
+                                if(modo_ds == 1):
+                                    print("1/2", "Rep", repetidor)
                                 ciclo_1_1 = 0
                                 ciclo_1_2 = 1
                                 depois = 2
@@ -860,7 +937,7 @@ while (reniciar != 1):
         print("O", onda)
         text = 1
 #Coisas para mexer aqui:
-#1- Espaçamento, instável
+#1- Espaçamento, instável - Estável agora, check
 #2- Criar padrões com utilizando as section_ciclos
 #3- Criar outros tipos de ondas:
 #   Divisão
@@ -868,4 +945,6 @@ while (reniciar != 1):
 #   Raízes
 #   Adição
 #   Exponenciação
-#4 Integra cálculo as ondas
+#4- Integra cálculo as ondas
+#5- Altura inicial personalisável - Fase de testes
+#6- Mensagens de introdução
