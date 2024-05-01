@@ -3,6 +3,7 @@ modo_ds = 1#modo desenvolvedor
 #Renicialização
 reniciar = 0
 #Valores para as ondas
+proporcao = 1
 #Ciclo
 section_ciclo = 1
 ciclo_1_1 = 1
@@ -12,17 +13,20 @@ ciclo_1_4 = 0
 ciclo_1_5 = 0
 ciclo_1_6 = 0
 #Repetidores
+#Ciclo
 repet_ciclo_1_1 = 1
 repet_ciclo_1_2 = 0
 repet_ciclo_1_3 = 0
 repet_ciclo_1_4 = 0
 repet_ciclo_1_5 = 0
 repet_ciclo_1_6 = 0
+#Seções
+repet_sectio_1 = 2
 #Removedor
 remover_1 = 0
 repetidor = 0
+repetidor_se = 0
 depois = 1
-
 ciclo = 0
 ciclo_des = repet_ciclo_1_1+repet_ciclo_1_2+repet_ciclo_1_3+repet_ciclo_1_4+repet_ciclo_1_5+repet_ciclo_1_6
 #Seção 1
@@ -71,13 +75,6 @@ fator2_1_3 = 0
 fator2_1_4 = 0
 fator2_1_5 = 0
 fator2_1_6 = 0
-#Divisor
-di_1_1 = 10
-di_1_2 = 0
-di_1_3 = 0
-di_1_4 = 0
-di_1_5 = 0
-di_1_6 = 0
 #Suavidade
 sua_1_1 = 1
 sua_1_2 = 1
@@ -85,6 +82,20 @@ sua_1_3 = 0
 sua_1_4 = 0
 sua_1_5 = 0
 sua_1_6 = 0
+#Tipos
+onda_1_1_t = 1
+onda_1_2_t = 1
+onda_1_3_t = 1
+onda_1_4_t = 1
+onda_1_5_t = 1
+onda_1_6_t = 1
+#Quantidade de tipos
+quant_tipo = 5
+#4Tipos:
+#1- Multiplicar
+#2- Dividir
+#3- Somar
+#4- Subtrair
 #Número
 fator1 = int(10)# número desejado a ser multiplicado
 fator2 = int(10)# número desejado a ser multiplicado pelo fator1_di
@@ -116,8 +127,9 @@ pro_ro_es_exibir = pro_ro_es
 pro_ro_di = 0#direito
 pro_ro_di_exibir = pro_ro_di
 #Outros
-#Incializador
+#Incializadores
 onda = 1
+ativador = 0
 #Config
 entra = 0
 #Texto
@@ -127,13 +139,16 @@ vezes = 0
 #Configurações
 exibir_instrucoes = 1
 configuracoes = 0
-#Marcador
-marcador_1 = 0
+selecionar_tipo = None
+estado_config = 1
 while (reniciar != 1):
     #Repetidor
     while(onda == 1):
-        onda = 1
+        #Renicializanodres importantes. Não mexa!!!!
         configuracoes = 0
+        repetidor_se = 0
+        depois = 1
+        t_atual = 1
         #Texto
         while(text == 1):
             #Início
@@ -161,6 +176,7 @@ while (reniciar != 1):
             while(configuracoes == 1):
                 #Ciclo
                 ciclo_des = 0
+                #Dados atuais
                 #Onda atual
                 def onda_atual(atual):
                     if(ciclo_1_1 == 2):
@@ -176,390 +192,637 @@ while (reniciar != 1):
                     elif(ciclo_1_6 == 2):
                         return 6
                 o_atual = onda_atual(int())
+                def tipo_atual(t_atual):
+                    if(section_ciclo == 1):
+                        #1
+                        if(ciclo_1_1 == 2):
+                            if(onda_1_1_t == 1):
+                                return 1
+                            elif(onda_1_1_t == 2):
+                                return 2
+                        #2
+                        elif(ciclo_1_2 == 2):
+                            if(onda_1_2_t == 1):
+                                return 1
+                            elif(onda_1_2_t == 2):
+                                return 2
+                        #3
+                        elif(ciclo_1_3 == 2):
+                            if(onda_1_3_t == 1):
+                                return 1
+                            elif(onda_1_3_t == 2):
+                                return 2
+                        #4
+                        elif(ciclo_1_4 == 2):
+                            if(onda_1_4_t == 1):
+                                return 1
+                            elif(onda_1_4_t == 2):
+                                return 2
+                        #5
+                        elif(ciclo_1_5 == 2):
+                            if(onda_1_5_t == 1):
+                                return 1
+                            elif(onda_1_5_t == 2):
+                                return 2
+                        #6
+                        elif(ciclo_1_6 == 2):
+                            if(onda_1_6_t == 1):
+                                return 1
+                            elif(onda_1_6_t == 2):
+                                return 2
+                t_atual = tipo_atual(int())
+                if(t_atual == None):
+                    print("Modelo de onda inválido, altere-a para não ocorre erros")
+                    if(ciclo_1_1 == 2):
+                        onda_1_1_t = 1
+                    elif(ciclo_1_2 == 2):
+                        onda_1_2_t = 1
+                    elif(ciclo_1_3 == 2):
+                        onda_1_3_t = 1
+                    elif(ciclo_1_4 == 2):
+                        onda_1_4_t = 1
+                    elif(ciclo_1_5 == 2):
+                        onda_1_5_t = 1
+                    elif(ciclo_1_6 == 2):
+                        onda_1_6_t = 1
                 if(entra == 0):
-                    print("Seção", section_ciclo, "Onda:", o_atual,)
-                print("Digite as suas modificações")
-                comecar = str(input(""))
-                #Define onda
-                #Seção
-                if(comecar == "st") or (comecar == "St") or (comecar == "sT"):
-                    print("Escolha uma seção padrão para as suas ondas:")
-                    escolha_section = int(input(""))
-                    def section(esc):
-                        if(escolha_section == 1):
-                            return 1
-                        elif(escolha_section == 2):
-                            return 2
-                        elif(escolha_section == 3):
-                            return 3
-                    section_ciclo = section(int())
-                #Onda
-                #Adicionar e configurar
-                #1
-                elif(comecar == "o1"):
-                    if(section_ciclo == 1):
-                        ciclo_1_1 = 2
-                        ciclo_1_2 = 0
-                        ciclo_1_3 = 0
-                        ciclo_1_4 = 0
-                        ciclo_1_5 = 0
-                        ciclo_1_6 = 0
-                #2
-                elif(comecar == "o2"):
-                    if(section_ciclo == 1):
-                        ciclo_1_1 = 0
-                        ciclo_1_2 = 2
-                        ciclo_1_3 = 0
-                        ciclo_1_4 = 0
-                        ciclo_1_5 = 0
-                        ciclo_1_6 = 0
-                #3
-                elif(comecar == "o3"):
-                    if(section_ciclo == 1):
-                        ciclo_1_1 = 0
-                        ciclo_1_2 = 0
-                        ciclo_1_3 = 2
-                        ciclo_1_4 = 0
-                        ciclo_1_5 = 0
-                        ciclo_1_6 = 0
-                #4
-                elif(comecar == "o4"):
-                    if(section_ciclo == 1):
-                        ciclo_1_1 = 0
-                        ciclo_1_2 = 0
-                        ciclo_1_3 = 0
-                        ciclo_1_4 = 2
-                        ciclo_1_5 = 0
-                        ciclo_1_6 = 0
-                #5
-                elif(comecar == "o5"):
-                    if(section_ciclo == 1):
-                        ciclo_1_1 = 0
-                        ciclo_1_2 = 0
-                        ciclo_1_3 = 0
-                        ciclo_1_4 = 0
-                        ciclo_1_5 = 2
-                        ciclo_1_6 = 0
-                #6
-                elif(comecar == "o6"):
-                    if(section_ciclo == 1):
-                        ciclo_1_1 = 0
-                        ciclo_1_2 = 0
-                        ciclo_1_3 = 0
-                        ciclo_1_4 = 0
-                        ciclo_1_5 = 0
-                        ciclo_1_6 = 2
-                #Repetidor
-                elif(comecar == "o r") or (comecar == "O r"):
-                    print("Repetido da Onda:", o_atual, "Seção", section_ciclo)
-                    if(ciclo_1_1 == 2):
-                        repet_ciclo_1_1 = int(input(""))
-                    elif(ciclo_1_2 == 2):
-                        repet_ciclo_1_2 = int(input(""))
-                    elif(ciclo_1_3 == 2):
-                        repet_ciclo_1_3 = int(input(""))
-                    elif(ciclo_1_4 == 2):
-                        repet_ciclo_1_4 = int(input(""))
-                    elif(ciclo_1_5 == 2):
-                        repet_ciclo_1_5 = int(input(""))
-                    elif(ciclo_1_6 == 2):
-                        repet_ciclo_1_6 = int(input(""))
-                #Remover
-                elif(comecar == "o-") or (comecar == "O-"):
-                    escolha_onda_remover = int(input(""))
-                    if(section_ciclo == 1):
-                        #1
-                        if(escolha_onda_remover == 1):
-                            quant_dej_dir_1_1 = 0
-                            repet_ciclo_1_1 = 0
-                            remover_1 = 1
-                        #2
-                        elif(escolha_onda_remover == 2):
-                            quant_dej_dir_1_2 = 0
-                            repet_ciclo_1_2 = 0
-                            remover_1 = 2
-                        #3
-                        elif(escolha_onda_remover == 3):
-                            quant_dej_dir_1_3 = 0
-                            repet_ciclo_1_3 = 0
-                            remover_1 = 3
-                        #4
-                        elif(escolha_onda_remover == 4):
-                            quant_dej_dir_1_4 = 0
-                            repet_ciclo_1_4 = 0
-                            remover_1 = 4
-                        #5
-                        elif(escolha_onda_remover == 5):
-                            quant_dej_dir_1_5 = 0
-                            repet_ciclo_1_5 = 0
-                            remover_1 = 5
-                        #6
-                        elif(escolha_onda_remover == 6):
-                            quant_dej_dir_1_6 = 0
-                            repet_ciclo_1_6 = 0
-                            remover_1 = 6
-                #Comprimenoto
-                elif(comecar == "T") or (comecar == "t"):
-                    print("Tamanho da Onda", o_atual, "Seção:",section_ciclo)
-                    if(section_ciclo == 1):
-                        if(ciclo_1_1 == 2):
-                            quant_dej_dir_1_1 = int(input(""))
-                        elif(ciclo_1_2 == 2):
-                            quant_dej_dir_1_2 = int(input(""))
-                        elif(ciclo_1_3 == 2):
-                            quant_dej_dir_1_3 = int(input(""))
-                        elif(ciclo_1_4 == 2):
-                            quant_dej_dir_1_4 = int(input(""))
-                        elif(ciclo_1_5 == 2):
-                            quant_dej_dir_1_5 = int(input(""))
-                        elif(ciclo_1_6 == 2):
-                            quant_dej_dir_1_6 = int(input(""))
-                #Altura
-                elif(comecar == "a") or (comecar == "A"):
-                    print("Altura da Onda:", o_atual, "Seção", section_ciclo)
-                    if(section_ciclo == 1):#S1
-                        if(ciclo_1_1 == 2):#1
-                            rigth_armazenada_1_1 = int(input(""))
-                        elif(ciclo_1_2 == 2):#2
-                            rigth_armazenada_1_2 = int(input(""))
-                        elif(ciclo_1_3 == 2):#3
-                            rigth_armazenada_1_3 = int(input(""))
-                        elif(ciclo_1_4 == 2):#4
-                            rigth_armazenada_1_4 = int(input(""))
-                        elif(ciclo_1_5 == 2):#5
-                            rigth_armazenada_1_5 = int(input(""))
-                        elif(ciclo_1_6 == 2):#6
-                            rigth_armazenada_1_6 = int(input(""))
-                #Suavidade
-                elif(comecar == "S") or (comecar == "s"):
-                    print("Suavidade da Onda[S|N]:", o_atual, "Seção", section_ciclo)
-                    if(section_ciclo == 1):
-                        if(ciclo_1_1== 2):
-                            sua_1_1 = str(input(""))
-                            if(sua_1_1 == "S") or (sua_1_1 == "s"):
-                                sua_1_1 = int(1)
-                            elif(sua_1_1 == "N") or (sua_1_1 == "n"):
-                                sua_1_1 = int(0)
-                        elif(ciclo_1_2 == 2):
-                            sua_1_2 = str(input(""))
-                            if(sua_1_2 == "S") or (sua_1_2 == "s"):
-                                sua_1_2 = int(1)
-                            elif(sua_1_2 == "N") or (sua_1_2 == "n"):
-                                sua_1_2 = int(0)
-                        elif(ciclo_1_3 == 2):
-                            sua_1_3 = str(input(""))
-                            if(sua_1_3 == "S") or (sua_1_3 == "s"):
-                                sua_1_3 = int(1)
-                            elif(sua_1_3 == "N") or (sua_1_3 == "n"):
-                                sua_1_3 = int(0)
-                        elif(ciclo_1_4 == 2):
-                            sua_1_4 = str(input(""))
-                            if(sua_1_4 == "S") or (sua_1_4 == "s"):
-                                sua_1_4 = int(1)
-                            elif(sua_1_4 == "N") or (sua_1_4 == "n"):
-                                sua_1_4 = int(0)
-                        elif(ciclo_1_5 == 2):
-                            sua_1_5 = str(input(""))
-                            if(sua_1_5 == "S") or (sua_1_5 == "s"):
-                                sua_1_5 = int(1)
-                            elif(sua_1_5 == "N") or (sua_1_5 == "n"):
-                                sua_1_5 = int(0)
-                        elif(ciclo_1_6 == 2):
-                            sua_1_6 = str(input(""))
-                            if(sua_1_6 == "S") or (sua_1_6 == "s"):
-                                sua_1_6 = int(1)
-                            elif(sua_1_6== "N") or (sua_1_6 == "n"):
-                                sua_1_6 = int(0)
-                #Espaçamento
-                elif(comecar == "e") or (comecar == "E"):
-                    print("Espaçamento da Onda:", o_atual, "Seção", section_ciclo)
-                    if(section_ciclo == 1):
-                        if(ciclo_1_1 == 2):
-                            esp_des_1_1 = int(input(""))
-                        elif(ciclo_1_2 == 2):
-                            esp_des_1_2 = int(input(""))
-                        elif(ciclo_1_3 == 2):
-                            esp_des_1_3 = int(input(""))
-                        elif(ciclo_1_4 == 2):
-                            esp_des_1_4 = int(input(""))
-                        elif(ciclo_1_5 == 2):
-                            esp_des_1_5 = int(input(""))
-                        elif(ciclo_1_6 == 2):
-                            esp_des_1_6 = int(input(""))
-                #Números
-                #Multiplico comum
-                elif(comecar == "N m") or (comecar == "n M") or (comecar == "n m"):
-                    print("Número a ser multiplicado por si mesmo, da Onda", o_atual, "Seção", section_ciclo)
-                    if(section_ciclo == 1):
-                        if(ciclo_1_1 == 2):
-                            n_m_1 = int(input(""))
-                            fator1_1_1 = n_m_1
-                            fator2_1_1 = n_m_1
-                        elif(ciclo_1_2 == 2):
-                            n_m_1 = int(input(""))
-                            fator1_1_2 = n_m_1
-                            fator2_1_2 = n_m_1
-                        elif(ciclo_1_3 == 2):
-                            n_m_1 = int(input(""))
-                            fator1_1_3 = n_m_1
-                            fator2_1_3 = n_m_1
-                        elif(ciclo_1_4 == 2):
-                            n_m_1 = int(input(""))
-                            fator1_1_4 = n_m_1
-                            fator2_1_4 = n_m_1
-                        elif(ciclo_1_5 == 2):
-                            n_m_1 = int(input(""))
-                            fator1_1_5 = n_m_1
-                            fator2_1_5 = n_m_1
-                        elif(ciclo_1_6 == 2):
-                            n_m_1 = int(input(""))
-                            fator1_1_6 = n_m_1
-                            fator2_1_6 = n_m_1
-                #Fatores
-                #Fator1
-                elif(comecar == "N m1") or (comecar == "n M1") or (comecar == "n m1"):
-                    print("Multiplo 1 da Onda", o_atual, "Seção", section_ciclo)
-                    if(section_ciclo == 1):
-                        if(ciclo_1_1 ==2):
-                            fator1_1_1 = int(input(""))
-                        elif(ciclo_1_2 == 2):
-                            fator1_1_2 = int(input(""))
-                        elif(ciclo_1_3 == 2):
-                            fator1_1_3 = int(input(""))
-                        elif(ciclo_1_4 == 2):
-                            fator1_1_4 = int(input(""))
-                        elif(ciclo_1_5 == 2):
-                            fator1_1_5 = int(input(""))
-                        elif(ciclo_1_6 == 2):
-                            fator1_1_6 = int(input(""))
-                #Fator 2
-                elif(comecar == "N m2") or (comecar == "n M2") or (comecar == "n m2"):
-                    print("Multiplo 2 da Onda", o_atual, "Seção", section_ciclo)
-                    if(section_ciclo == 1):
-                        if(ciclo_1_1 == 2):
-                            fator2_1_1 = int(input(""))
-                        elif(ciclo_1_2 == 2):
-                            fator2_1_2 = int(input(""))
-                        elif(ciclo_1_3 == 2):
-                            fator2_1_3 = int(input(""))
-                        elif(ciclo_1_4 == 2):
-                            fator2_1_4 = int(input(""))
-                        elif(ciclo_1_5 == 2):
-                            fator2_1_5 = int(input(""))
-                        elif(ciclo_1_6 == 2):
-                            fator2_1_6 = int(input(""))
-                #Número divisor
-                elif(comecar == "N d") or (comecar == "n D") or (comecar == "n d"):
-                    print("Divisor da Onda", o_atual, ", Seção", section_ciclo)
-                    if(section_ciclo == 1):
-                        if(ciclo_1_1 == 2):
-                            di_1_1 = int(input(""))
-                        elif(ciclo_1_2 == 2):
-                            di_1_2 = int(input(""))
-                        elif(ciclo_1_3 == 2):
-                            di_1_3 = int(input(""))
-                        elif(ciclo_1_4 == 2):
-                            di_1_4 = int(input(""))
-                        elif(ciclo_1_5 == 2):
-                            di_1_5 = int(input(""))
-                        elif(ciclo_1_6 == 2):
-                            di_1_6 = int(input(""))
-                #Listagem
-                #Local
-                elif(comecar == "L") or (comecar == "l"):
-                    print("Lista das configurações da onda atual:")
-                    if(section_ciclo == 1):
-                        print("\n", "==============","\n","Seção 1")
-                        #1
-                        if(ciclo_1_1 != 0):
-                            print("Onda 1", "\n", "Tamanho:", quant_dej_dir_1_1, "\n","Altura:", rigth_armazenada_1_1,"\n", "Altura inicial:", r_init_armazenada_1_1, "\n", "Espaçamento:", esp_des_1_1, "\n", "Fatores:", "\n", "1:", fator1_1_1, "\n","2", fator2_1_1, "\n", "Divisor:", di_1_1, "\n", "Suavidade:", sua_1_1, "\n", "Repetição:", repet_ciclo_1_1)
-                        #2
-                        elif(ciclo_1_2 != 0):
-                            print("Onda 2", "\n", "Tamanho:", quant_dej_dir_1_2, "\n","Altura:", rigth_armazenada_1_2,"\n", "Altura inicial:", r_init_armazenada_1_2, "\n", "Espaçamento:", esp_des_1_2, "\n", "Fatores:", "\n", "1:", fator1_1_2, "\n","2", fator2_1_2, "\n", "Divisor:", di_1_2, "\n", "Suavidade:", sua_1_2, "\n", "Repetição:", repet_ciclo_1_2)
-                        #3
-                        elif(ciclo_1_3 != 0):
-                            print("Onda 3", "\n", "Tamanho:", quant_dej_dir_1_3, "\n","Altura:", rigth_armazenada_1_3, "\n", "Altura inicial:", r_init_armazenada_1_3, "\n", "Espaçamento:", esp_des_1_3, "\n", "Fatores:", "\n", "1:", fator1_1_3, "\n","2", fator2_1_3, "\n", "Divisor:", di_1_3, "\n", "Suavidade:", sua_1_3, "\n", "Repetição:", repet_ciclo_1_3)
-                        #4
-                        elif(ciclo_1_4 != 0):
-                            print("Onda 4", "\n", "Tamanho:", quant_dej_dir_1_4, "\n","Altura:", rigth_armazenada_1_4,"\n", "Altura inicial:", r_init_armazenada_1_4, "\n", "Espaçamento:", esp_des_1_4, "\n", "Fatores:", "\n", "1:", fator1_1_4, "\n","2", fator2_1_4, "\n", "Divisor:", di_1_4, "\n", "Suavidade:", sua_1_4, "\n", "Repetição:", repet_ciclo_1_4)
-                        #5
-                        elif(ciclo_1_5 != 0):
-                            print("Onda 5", "\n", "Tamanho:", quant_dej_dir_1_5, "\n","Altura:", rigth_armazenada_1_5,"\n", "Altura inicial:", r_init_armazenada_1_5 ,"\n", "Espaçamento:", esp_des_1_5, "\n", "Fatores:", "\n", "1:", fator1_1_5, "\n","2", fator2_1_5, "\n", "Divisor:", di_1_5, "\n", "Suavidade:", sua_1_5, "\n", "Repetição:", repet_ciclo_1_5)
-                        #6
-                        elif(ciclo_1_6 != 0):
-                            print("Onda 6", "\n", "Tamanho:", quant_dej_dir_1_6, "\n","Altura:", rigth_armazenada_1_6,"\n", "Altura inicial:", r_init_armazenada_1_6,"\n", "Espaçamento:", esp_des_1_6, "\n", "Fatores:", "\n", "1:", fator1_1_6, "\n","2", fator2_1_6, "\n", "Divisor:", di_1_6, "\n", "Suavidade:", sua_1_6, "\n", "Repetição:", repet_ciclo_1_6)
-                        print("==============", "\n")
-                #Geral
-                elif(comecar == "Lg") or (comecar == "lg"):
-                    if(section_ciclo == 1):
-                        print("\n", "==============","\n","Seção 1")
-                        #1
-                        if(quant_dej_dir_1_1 != 0):
-                            print("Onda 1", "\n", "Tamanho:", quant_dej_dir_1_1, "\n""Altura:",    rigth_armazenada_1_1,"\n", "Altura inicial:",r_init_armazenada_1_1,   "\n", "Espaçamento:", esp_des_1_1, "\n","Fatores:", "\n", "1:",  fator1_1_1, "\n","2", fator2_1_1, "\n","Divisor:", di_1_1, "\n",    "Suavidade:", sua_1_1, "\n","Repetição:", repet_ciclo_1_1)
-                        #2
-                        if(quant_dej_dir_1_2 != 0):
-                            print("Onda 2", "\n", "Tamanho:", quant_dej_dir_1_2, "\n""Altura:",    rigth_armazenada_1_2,"\n", "Altura inicial:",r_init_armazenada_1_2,   "\n", "Espaçamento:", esp_des_1_2, "\n","Fatores:", "\n", "1:",  fator1_1_2, "\n","2", fator2_1_2, "\n","Divisor:", di_1_2, "\n",    "Suavidade:", sua_1_2, "\n","Repetição:", repet_ciclo_1_2)
-                        #3
-                        if(quant_dej_dir_1_3 != 0):
-                            print("Onda 3", "\n", "Tamanho:", quant_dej_dir_1_3, "\n""Altura:",    rigth_armazenada_1_3, "\n", "Altura inicial:",r_init_armazenada_1_3,  "\n", "Espaçamento:", esp_des_1_3, "\n","Fatores:", "\n", "1:",     fator1_1_3, "\n","2", fator2_1_3, "\n","Divisor:", di_1_3, "\n",   "Suavidade:", sua_1_3, "\n","Repetição:", repet_ciclo_1_3)
-                        #4
-                        if(quant_dej_dir_1_4 != 0):
-                            print("Onda 4", "\n", "Tamanho:", quant_dej_dir_1_4, "\n""Altura:",    rigth_armazenada_1_4,"\n", "Altura inicial:",r_init_armazenada_1_4,   "\n", "Espaçamento:", esp_des_1_4, "\n","Fatores:", "\n", "1:",  fator1_1_4, "\n","2", fator2_1_4, "\n","Divisor:", di_1_4, "\n",    "Suavidade:", sua_1_4, "\n","Repetição:", repet_ciclo_1_4)
-                        #5
-                        if(quant_dej_dir_1_5 != 0):
-                            print("Onda 5", "\n", "Tamanho:", quant_dej_dir_1_5, "\n""Altura:",    rigth_armazenada_1_5,"\n", "Altura inicial:",r_init_armazenada_1_5 ,  "\n", "Espaçamento:", esp_des_1_5, "\n","Fatores:", "\n", "1:",  fator1_1_5, "\n","2", fator2_1_5, "\n","Divisor:", di_1_5, "\n",    "Suavidade:", sua_1_5, "\n","Repetição:", repet_ciclo_1_5)
-                        #6
-                        if(quant_dej_dir_1_6 != 0):
-                            print("Onda 6", "\n", "Tamanho:", quant_dej_dir_1_6, "\n""Altura:",    rigth_armazenada_1_6,"\n", "Altura inicial:",r_init_armazenada_1_6,   "\n", "Espaçamento:", esp_des_1_6, "\n","Fatores:", "\n", "1:",   fator1_1_6, "\n","2", fator2_1_6, "\n","Divisor:", di_1_6, "\n",     "Suavidade:", sua_1_6, "\n","Repetição:", repet_ciclo_1_6)
-                        print("==============", "\n")
-                #Dúvida
-                elif(comecar == "?"):
-                    print("Seção:", section_ciclo, "Onda:", o_atual)
-                #Finalização
-                elif(comecar == "f") or (comecar == "F"):
-                    ciclo_des = repet_ciclo_1_1+repet_ciclo_1_2+repet_ciclo_1_3+repet_ciclo_1_4+repet_ciclo_1_5+repet_ciclo_1_6
-                    ciclo_1_1 = 1
-                    if(ciclo_1_2 != 0):
-                        ciclo_1_2 = 0
-                    elif(ciclo_1_3 != 0):
-                        ciclo_1_3 = 0
-                    elif(ciclo_1_4 != 0):
-                        ciclo_1_4 = 0
-                    elif(ciclo_1_5 != 0):
-                        ciclo_1_5 = 0
-                    elif(ciclo_1_6 != 0):
-                        ciclo_1_6 = 0
-                    configuracoes = 2
-                #Modo DS
-                elif(comecar == "ds") or (comecar == "Ds"):
-                    print("Como você descobriu aqui !!!???")
-                    modo_ds = int(input(""))
-                #Altura Inicial
-                elif(comecar == "ai") or (comecar == "Ai") or (comecar == "AI!"):
-                    print("Digite a altura inicicial de sua onda")
-                    if(ciclo_1_1 == 2):
-                        r_init_armazenada_1_1 = int(input(""))
-                    elif(ciclo_1_2 == 2):
-                        r_init_armazenada_1_2 = int(input(""))
-                    elif(ciclo_1_3 == 2):
-                        r_init_armazenada_1_3 = int(input(""))
-                    elif(ciclo_1_4 == 2):
-                        r_init_armazenada_1_4 = int(input(""))
-                    elif(ciclo_1_5 == 2):
-                        r_init_armazenada_1_5 = int(input(""))
-                    elif(ciclo_1_6 == 2):
-                        r_init_armazenada_1_6 = int(input(""))
-                #Erro
+                    print("Seção", section_ciclo, "Onda:", o_atual,)                
+                #Comecar
+                if(estado_config == 1):
+                    comecar = str(input("~ "))
+                    #Define onda
+                    #Seção
+                    if(comecar == "st") or (comecar == "St") or (comecar == "sT"):
+                        print("Escolha uma seção padrão para as suas ondas:")
+                        estado_config = 2
+                    elif(comecar == "str") or (comecar == "Str"):
+                        print("Repetidor da Seção", section_ciclo)
+                        if(section_ciclo == 1):
+                            repet_sectio_1 = int(input())
+                    #Onda
+                    #Adicionar e configurar
+                    #1
+                    elif(comecar == "o1"):
+                        if(section_ciclo == 1):
+                            ciclo_1_1 = 2
+                            ciclo_1_2 = 0
+                            ciclo_1_3 = 0
+                            ciclo_1_4 = 0
+                            ciclo_1_5 = 0
+                            ciclo_1_6 = 0
+                    #2
+                    elif(comecar == "o2"):
+                        if(section_ciclo == 1):
+                            ciclo_1_1 = 0
+                            ciclo_1_2 = 2
+                            ciclo_1_3 = 0
+                            ciclo_1_4 = 0
+                            ciclo_1_5 = 0
+                            ciclo_1_6 = 0
+                    #3
+                    elif(comecar == "o3"):
+                        if(section_ciclo == 1):
+                            ciclo_1_1 = 0
+                            ciclo_1_2 = 0
+                            ciclo_1_3 = 2
+                            ciclo_1_4 = 0
+                            ciclo_1_5 = 0
+                            ciclo_1_6 = 0
+                    #4
+                    elif(comecar == "o4"):
+                        if(section_ciclo == 1):
+                            ciclo_1_1 = 0
+                            ciclo_1_2 = 0
+                            ciclo_1_3 = 0
+                            ciclo_1_4 = 2
+                            ciclo_1_5 = 0
+                            ciclo_1_6 = 0
+                    #5
+                    elif(comecar == "o5"):
+                        if(section_ciclo == 1):
+                            ciclo_1_1 = 0
+                            ciclo_1_2 = 0
+                            ciclo_1_3 = 0
+                            ciclo_1_4 = 0
+                            ciclo_1_5 = 2
+                            ciclo_1_6 = 0
+                    #6
+                    elif(comecar == "o6"):
+                        if(section_ciclo == 1):
+                            ciclo_1_1 = 0
+                            ciclo_1_2 = 0
+                            ciclo_1_3 = 0
+                            ciclo_1_4 = 0
+                            ciclo_1_5 = 0
+                            ciclo_1_6 = 2
+                    #Repetidor
+                    elif(comecar == "or") or (comecar == "Or"):
+                        print("Repetido da Onda:", o_atual, "Seção", section_ciclo)
+                        estado_config = 3
+                    #Remover
+                    elif(comecar == "o-") or (comecar == "O-"):
+                        print("Selecione açuma onda para ser deletada")
+                        estado_config = 4
+                    #Comprimenoto
+                    elif(comecar == "T") or (comecar == "t"):
+                        print("Tamanho da Onda", o_atual, "Seção:",section_ciclo)
+                        estado_config = 5
+                    #Altura
+                    elif(comecar == "a") or (comecar == "A"):
+                        print("Altura final da Onda:", o_atual, "Seção", section_ciclo)
+                        estado_config = 6
+                    #Suavidade
+                    elif(comecar == "S") or (comecar == "s"):
+                        print("Suavidade da Onda[S|N]:", o_atual, "Seção", section_ciclo)
+                        estado_config = 7
+                    #Espaçamento
+                    elif(comecar == "e") or (comecar == "E"):
+                        print("Espaçamento da Onda:", o_atual, "Seção", section_ciclo)
+                        estado_config = 8
+                    #Números
+                    #Multiplos mútuos
+                    elif(comecar == "N m") or (comecar == "n M") or (comecar == "n m"):
+                        print("Número a ser multiplicado por si mesmo, da Onda", o_atual, "Seção",  section_ciclo)
+                        estado_config = 9
+                    #Fatores
+                    #Fator1
+                    elif(comecar == "N1") or (comecar == "n1"):
+                        if(t_atual == 1):
+                            print("Multiplo 1 da Onda", o_atual, "Seção", section_ciclo)
+                        elif(t_atual == 2):
+                            print("Dividendo da Onda", o_atual, "Seção", section_ciclo)
+                        estado_config = 10
+                    #Fator 2
+                    elif(comecar == "N2") or (comecar == "n2"):
+                        if(t_atual == 1):
+                            print("Multiplo 2 da Onda", o_atual, "Seção", section_ciclo)
+                        elif(t_atual == 2):
+                            print("Divisor da Onda", o_atual, "Seção", section_ciclo)
+                        estado_config = 11
+                    #Listagem
+                    #Local
+                    elif(comecar == "L") or (comecar == "l"):
+                        print("Lista das configurações da onda atual:")
+                        if(section_ciclo == 1):
+                            print("\n", "==============","\n","Seção 1")
+                            #1
+                            if(ciclo_1_1 != 0):
+                                print("Onda 1", "\n", "Tamanho:", quant_dej_dir_1_1, "\n""Altura:",    rigth_armazenada_1_1,"\n", "Altura inicial:",r_init_armazenada_1_1,   "\n", "Espaçamento:", esp_des_1_1)
+                                if(onda_1_1_t == 1):
+                                    print("Fatores:", "\n", "1:",  fator1_1_1, "\n","2", fator2_1_1)
+                                elif(onda_1_1_t == 2):
+                                    print("Dividendo", fator1_1_1, "\n","Divisor", di_1_1)
+                                print("Suavidade:", sua_1_1, "\n","Repetição:", repet_ciclo_1_1, "\n")
+                            #2
+                            elif(ciclo_1_2 != 0):
+                                print("Onda 2", "\n", "Tamanho:", quant_dej_dir_1_2, "\n""Altura:",    rigth_armazenada_1_2,"\n", "Altura inicial:",r_init_armazenada_1_2,   "\n", "Espaçamento:", esp_des_1_2)
+                                if(onda_1_2_t == 1):
+                                    print("Fatores:", "\n", "1:",  fator1_1_2, "\n","2", fator2_1_2)
+                                elif(onda_1_2_t == 2):
+                                    print("Dividendo", fator1_1_2, "\n","Divisor", di_1_2)
+                                print("Suavidade:", sua_1_2, "\n","Repetição:", repet_ciclo_1_2, "\n")
+                            #3
+                            elif(ciclo_1_3 != 0):
+                                print("Onda 3", "\n", "Tamanho:", quant_dej_dir_1_3, "\n""Altura:",    rigth_armazenada_1_3,"\n", "Altura inicial:",r_init_armazenada_1_3,   "\n", "Espaçamento:", esp_des_1_3)
+                                if(onda_1_3_t == 1):
+                                    print("Fatores:", "\n", "1:",  fator1_1_3, "\n","2", fator2_1_3)
+                                elif(onda_1_3_t == 2):
+                                    print("Dividendo", fator1_1_3, "\n","Divisor", di_1_3)
+                                print("Suavidade:", sua_1_3, "\n","Repetição:", repet_ciclo_1_3, "\n")
+                            #4
+                            elif(ciclo_1_4 != 0):
+                                print("Onda 4", "\n", "Tamanho:", quant_dej_dir_1_4, "\n","Altura:", rigth_armazenada_1_4,"\n", "Altura inicial:",r_init_armazenada_1_4,"\n", "Espaçamento:", esp_des_1_4)
+                                if(onda_1_4_t == 1):
+                                    print("Fatores:", "\n", "1:",  fator1_1_4, "\n","2", fator2_1_4)
+                                elif(onda_1_4_t == 2):
+                                    print("Dividendo", fator1_1_4, "\n","Divisor", di_1_4)
+                                print("Suavidade:", sua_1_4, "\n","Repetição:", repet_ciclo_1_4, "\n")
+                            #5
+                            elif(ciclo_1_5 != 0):
+                                print("Onda 5", "\n", "Tamanho:", quant_dej_dir_1_5, "\n","Altura:", rigth_armazenada_1_5,"\n", "Altura inicial:",r_init_armazenada_1_5,"\n", "Espaçamento:", esp_des_1_5)
+                                if(onda_1_5_t == 1):
+                                    print("Fatores:", "\n", "1:",  fator1_1_5, "\n","2", fator2_1_5)
+                                elif(onda_1_5_t == 2):
+                                    print("Dividendo", fator1_1_5, "\n","Divisor", di_1_5)
+                                print("Suavidade:", sua_1_5, "\n","Repetição:", repet_ciclo_1_5, "\n")
+                            #6
+                            elif(ciclo_1_6 != 0):
+                                print("Onda 6", "\n", "Tamanho:", quant_dej_dir_1_6, "\n","Altura:", rigth_armazenada_1_6,"\n", "Altura inicial:",r_init_armazenada_1_6,"\n", "Espaçamento:", esp_des_1_6)
+                                if(onda_1_6_t == 1):
+                                    print("Fatores:", "\n", "1:",  fator1_1_6, "\n","2", fator2_1_6)
+                                elif(onda_1_6_t == 2):
+                                    print("Dividendo", fator1_1_6, "\n","Divisor", di_1_6)
+                                print("Suavidade:", sua_1_6, "\n","Repetição:", repet_ciclo_1_6, "\n")
+                            print("==============", "\n")
+                    #Geral
+                    elif(comecar == "Lg") or (comecar == "lg"):
+                        if(section_ciclo == 1):
+                            print("\n", "==============")
+                            if(repet_sectio_1>1):
+                                print("Seção 1 repete", repet_sectio_1, "vezes")
+                            else:
+                                print("Seção 1 repete", repet_sectio_1, "vez")
+                            #1
+                            if(quant_dej_dir_1_1 != 0):
+                                if(onda_1_1_t<1) or (onda_1_1_t>quant_tipo):
+                                    print("Onda 1 | Modelo inválido")
+                                else:
+                                    print("Onda 1 | Tipo:", onda_1_1_t)
+                                print("Tamanho:", quant_dej_dir_1_1, "\n","Espaçamento:", esp_des_1_1, "\n","Altura:", rigth_armazenada_1_1)
+                                if(onda_1_1_t == 1):
+                                    print("Altura inicial:",r_init_armazenada_1_1, "\n","Fatores:", "\n", "1:", fator1_1_1, "\n","2", fator2_1_1)
+                                elif(onda_1_1_t == 2):
+                                    print("Dividendo:", fator1_1_1,"\n","Divisor:", fator2_1_1)
+                                else:
+                                    print("Erro")
+                                print("Suavidade:", sua_1_1, "\n","Repetição:", repet_ciclo_1_1, "\n")
+                            #2
+                            if(quant_dej_dir_1_2 != 0):
+                                if(onda_1_2_t<1) or (onda_1_2_t>quant_tipo):
+                                    print("Onda 2 | Modelo inválido")
+                                else:
+                                    print("Onda 2 | Tipo:", onda_1_2_t)
+                                print("Tamanho:", quant_dej_dir_1_1, "\n", "Espaçamento:", esp_des_1_1, "\n","Altura:", rigth_armazenada_1_1)
+                                if(onda_1_2_t == 1):
+                                    print("Altura inicial:",r_init_armazenada_1_2, "\n","Fatores:", "\n", "1:", fator1_1_2, "\n","2", fator2_1_2)
+                                elif(onda_1_2_t == 2):
+                                    print("Dividendo:", fator1_1_2, "\n","Divisor:", fator2_1_2)
+                                else:
+                                    print("Erro")
+                                print("Suavidade:", sua_1_2, "\n","Repetição:", repet_ciclo_1_2, "\n")
+                            #3
+                            if(quant_dej_dir_1_3 != 0):
+                                if(onda_1_3_t<1) or (onda_1_3_t>quant_tipo):
+                                    print("Onda 3 | Modelo inválido")
+                                else:
+                                    print("Onda 3 | Tipo:", onda_1_3_t)
+                                print("Tamanho:", quant_dej_dir_1_3, "\n", "Espaçamento:", esp_des_1_3, "\n","Altura:", rigth_armazenada_1_3)
+                                if(onda_1_3_t == 1):
+                                    print("Altura inicial:",r_init_armazenada_1_3, "\n","Fatores:", "\n", "1:", fator1_1_3, "\n","2", fator2_1_3)
+                                elif(onda_1_3_t == 2):
+                                    print("Dividendo:", fator1_1_3, "\n","Divisor:", fator2_1_3)
+                                else:
+                                    print("Erro")
+                                print("Suavidade:", sua_1_3, "\n","Repetição:", repet_ciclo_1_3, "\n")
+                            #4
+                            if(quant_dej_dir_1_4 != 0):
+                                if(onda_1_4_t<1) or (onda_1_4_t>quant_tipo):
+                                    print("Onda 4 | Modelo inválido")
+                                else:
+                                    print("Onda 4 | Tipo:", onda_1_4_t)
+                                print("Tamanho:", quant_dej_dir_1_4, "\n", "Espaçamento:", esp_des_1_4, "\n","Altura:", rigth_armazenada_1_4)
+                                if(onda_1_4_t == 1):
+                                    print("Altura inicial:",r_init_armazenada_1_4, "\n","Fatores:", "\n", "1:", fator1_1_4, "\n","2", fator2_1_4)
+                                elif(onda_1_4_t == 2):
+                                    print("Dividendo:", fator1_1_4, "\n","Divisor:", fator2_1_4)
+                                else:
+                                    print("Erro")
+                                print("Suavidade:", sua_1_4, "\n","Repetição:", repet_ciclo_1_4, "\n")
+                            #5
+                            if(quant_dej_dir_1_5 != 0):
+                                if(onda_1_5_t<1) or (onda_1_5_t>quant_tipo):
+                                    print("Onda 5 | Modelo inválido")
+                                else:
+                                    print("Onda 5 | Tipo:", onda_1_5_t)
+                                print("Tamanho:", quant_dej_dir_1_5, "\n", "Espaçamento:", esp_des_1_5, "\n","Altura:", rigth_armazenada_1_5)
+                                if(onda_1_5_t == 1):
+                                    print("Altura inicial:",r_init_armazenada_1_5, "\n","Fatores:", "\n", "1:", fator1_1_5, "\n","2", fator2_1_5)
+                                elif(onda_1_5_t == 2):
+                                    print("Dividendo:", fator1_1_5, "\n","Divisor:", fator2_1_5)
+                                else:
+                                    print("Erro")
+                                print("Suavidade:", sua_1_5, "\n","Repetição:", repet_ciclo_1_5, "\n")
+                            #6
+                            if(quant_dej_dir_1_6 != 0):
+                                if(onda_1_6_t<1) or (onda_1_6_t>quant_tipo):
+                                    print("Onda 6 | Modelo inválido")
+                                else:
+                                    print("Onda 6 | Tipo:", onda_1_6_t)
+                                print("Tamanho:", quant_dej_dir_1_6, "\n", "Espaçamento:", esp_des_1_6, "\n","Altura:", rigth_armazenada_1_6)
+                                if(onda_1_6_t == 1):
+                                    print("Altura inicial:",r_init_armazenada_1_6, "\n","Fatores:", "\n", "1:", fator1_1_6, "\n","2", fator2_1_6)
+                                elif(onda_1_6_t == 2):
+                                    print("Dividendo:", fator1_1_6, "\n","Divisor:", fator2_1_6)
+                                else:
+                                    print("Erro")
+                                print("Suavidade:", sua_1_6, "\n","Repetição:", repet_ciclo_1_6, "\n")
+                            print("==============", "\n")
+                    #Dúvida
+                    elif(comecar == "?"):
+                        print("Seção:", section_ciclo, "Onda:", o_atual)
+                    #Finalização
+                    elif(comecar == "f") or (comecar == "F"):
+                        estado_config = 14
+                    #Modo DS
+                    elif(comecar == "ds") or (comecar == "Ds"):
+                        print("Como você descobriu aqui !!!???")
+                        modo_ds = int(input(""))
+                    #Altura Inicial
+                    elif(comecar == "ai") or (comecar == "Ai") or (comecar == "AI!"):
+                        print("Digite a altura inicicial de sua onda")
+                        estado_config = 12
+                    #Tipo
+                    elif(comecar == "mo") or (comecar == "Mo"):
+                        print("Selecione o modelo da onda", o_atual, "Seção", section_ciclo)
+                        estado_config = 13
+                    #Erro
+                    else:
+                        print("Inválido, tente novamente")
                 else:
-                    print("Inválido, tente novamente")
+                    if(estado_config != 7) and (estado_config != 13) and (estado_config != 14):
+                        comecar = int(input(""))
+                    else:
+                        comecar = 1
+                    if type(comecar) is int and (comecar>0):
+                        #Proscessadores
+                        #Seção padrão
+                        def retornador():
+                            return comecar
+                        #Seletor de seções
+                        if(estado_config == 2):
+                            def section(esc):
+                                    if(comecar == 1):
+                                        return 1
+                                    elif(comecar == 2):
+                                        return 2
+                                    elif(comecar == 3):
+                                        return 3
+                            section_ciclo = section(int())
+                        #Rpetidor|Cicilo
+                        elif(estado_config == 3):
+                            if(ciclo_1_1 == 2):
+                                repet_ciclo_1_1 = retornador()
+                            elif(ciclo_1_2 == 2):
+                                repet_ciclo_1_2 = retornador()
+                            elif(ciclo_1_3 == 2):
+                                repet_ciclo_1_3 = retornador()
+                            elif(ciclo_1_4 == 2):
+                                repet_ciclo_1_4 = retornador()
+                            elif(ciclo_1_5 == 2):
+                                repet_ciclo_1_5 = retornador()
+                            elif(ciclo_1_6 == 2):
+                                repet_ciclo_1_6 = retornador()
+                        #Removedor
+                        elif(estado_config == 4):
+                            if(section_ciclo == 1):
+                                #1
+                                if(comecar == 1):
+                                    quant_dej_dir_1_1 = 0
+                                    repet_ciclo_1_1 = 0
+                                    remover_1 = 1
+                                #2
+                                elif(comecar == 2):
+                                    quant_dej_dir_1_2 = 0
+                                    repet_ciclo_1_2 = 0
+                                    remover_1 = 2
+                                #3
+                                elif(comecar == 3):
+                                    quant_dej_dir_1_3 = 0
+                                    repet_ciclo_1_3 = 0
+                                    remover_1 = 3
+                                #4
+                                elif(comecar == 4):
+                                    quant_dej_dir_1_4 = 0
+                                    repet_ciclo_1_4 = 0
+                                    remover_1 = 4
+                                #5
+                                elif(comecar == 5):
+                                    quant_dej_dir_1_5 = 0
+                                    repet_ciclo_1_5 = 0
+                                    remover_1 = 5
+                                #6
+                                elif(comecar == 6):
+                                    quant_dej_dir_1_6 = 0
+                                    repet_ciclo_1_6 = 0
+                                    remover_1 = 6
+                        #Tamanho
+                        elif(estado_config == 5):
+                            if(section_ciclo == 1):
+                                if(ciclo_1_1 == 2):
+                                    quant_dej_dir_1_1 = retornador()
+                                elif(ciclo_1_2 == 2):
+                                    quant_dej_dir_1_2 = retornador()
+                                elif(ciclo_1_3 == 2):
+                                    quant_dej_dir_1_3 = retornador()
+                                elif(ciclo_1_4 == 2):
+                                    quant_dej_dir_1_4 = retornador()
+                                elif(ciclo_1_5 == 2):
+                                    quant_dej_dir_1_5 = retornador()
+                                elif(ciclo_1_6 == 2):
+                                    quant_dej_dir_1_6 = retornador()
+                            remover_1 = 0
+                        #Altura
+                        elif(estado_config == 6):
+                            if(section_ciclo == 1):#S1
+                                if(ciclo_1_1 == 2):#1
+                                    rigth_armazenada_1_1 = retornador()
+                                elif(ciclo_1_2 == 2):#2
+                                    rigth_armazenada_1_2 = retornador()
+                                elif(ciclo_1_3 == 2):#3
+                                    rigth_armazenada_1_3 = retornador()
+                                elif(ciclo_1_4 == 2):#4
+                                    rigth_armazenada_1_4 = retornador()
+                                elif(ciclo_1_5 == 2):#5
+                                    rigth_armazenada_1_5 = retornador()
+                                elif(ciclo_1_6 == 2):#6
+                                    rigth_armazenada_1_6 = retornador()
+                        #Suavidade
+                        elif(estado_config == 7):
+                            def suave_d(sus):
+                                if(sus == "S") or (sus == "s"):
+                                    return 1
+                                elif(sus == "N") or (sus == "n"):
+                                    return 0
+                                else:
+                                    print("Inválido")
+                            sus = suave_d(str(input("")))
+                            if(ciclo_1_1 == 2):
+                                sua_1_1 = sus
+                            elif(ciclo_1_2 == 2):
+                                sua_1_2 = sus
+                            elif(ciclo_1_3 == 2):
+                                sua_1_3 = sus
+                            elif(ciclo_1_4 == 2):
+                                sua_1_4 = sus
+                            elif(ciclo_1_5 == 2):
+                                sua_1_5 = sus
+                            elif(ciclo_1_6 == 2):
+                                sua_1_6 = sus
+                        #Espaçamento
+                        elif(estado_config == 8):
+                            if(section_ciclo == 1):
+                                if(ciclo_1_1 == 2):
+                                    esp_des_1_1 = retornador()
+                                elif(ciclo_1_2 == 2):
+                                    esp_des_1_2 = retornador()
+                                elif(ciclo_1_3 == 2):
+                                    esp_des_1_3 = retornador()
+                                elif(ciclo_1_4 == 2):
+                                    esp_des_1_4 = retornador()
+                                elif(ciclo_1_5 == 2):
+                                    esp_des_1_5 = retornador()
+                                elif(ciclo_1_6 == 2):
+                                    esp_des_1_6 = retornador()
+                        #Multiplo mutuo
+                        elif(estado_config == 9):
+                            if(section_ciclo == 1):
+                                if(ciclo_1_1 == 2):
+                                    fator1_1_1 = retornador()
+                                    fator2_1_1 = retornador()
+                                elif(ciclo_1_2 == 2):
+                                    fator1_1_2 = retornador()
+                                    fator2_1_2 = retornador()
+                                elif(ciclo_1_3 == 2):
+                                    fator1_1_3 = retornador()
+                                    fator2_1_3 = retornador()
+                                elif(ciclo_1_4 == 2):
+                                    fator1_1_4 = retornador()
+                                    fator2_1_4 = retornador()
+                                elif(ciclo_1_5 == 2):
+                                    fator1_1_5 = retornador()
+                                    fator2_1_5 = retornador()
+                                elif(ciclo_1_6 == 2):
+                                    fator1_1_6 = retornador()
+                                    fator2_1_6 = retornador()
+                        #Fator1
+                        elif(estado_config == 10):
+                            if(section_ciclo == 1):
+                                if(ciclo_1_1 == 2):
+                                    fator1_1_1 = retornador()
+                                elif(ciclo_1_2 == 2):
+                                    fator1_1_2 = retornador()
+                                elif(ciclo_1_3 == 2):
+                                    fator1_1_3 = retornador()
+                                elif(ciclo_1_4 == 2):
+                                    fator1_1_4 = retornador()
+                                elif(ciclo_1_5 == 2):
+                                    fator1_1_5 = retornador()
+                                elif(ciclo_1_6 == 2):
+                                    fator1_1_6 = retornador()
+                        #Fator2
+                        elif(estado_config == 11):
+                            if(section_ciclo == 1):
+                                if(ciclo_1_1 == 2):
+                                    fator2_1_1 = retornador()
+                                elif(ciclo_1_2 == 2):
+                                    fator2_1_2 = retornador()
+                                elif(ciclo_1_3 == 2):
+                                    fator2_1_3 = retornador()
+                                elif(ciclo_1_4 == 2):
+                                    fator2_1_4 = retornador()
+                                elif(ciclo_1_5 == 2):
+                                    fator2_1_5 = retornador()
+                                elif(ciclo_1_6 == 2):
+                                    fator2_1_6 = retornador()
+                        #Altura inicial
+                        elif(estado_config == 12):
+                            if(section_ciclo == 1):
+                                if(ciclo_1_1 == 2):
+                                    r_init_armazenada_1_1 = retornador()
+                                elif(ciclo_1_2 == 2):
+                                    r_init_armazenada_1_2 = retornador()
+                                elif(ciclo_1_3 == 2):
+                                    r_init_armazenada_1_3 = retornador()
+                                elif(ciclo_1_4 == 2):
+                                    r_init_armazenada_1_4 = retornador()
+                                elif(ciclo_1_5 == 2):
+                                    r_init_armazenada_1_5 = retornador()
+                                elif(ciclo_1_6 == 2):
+                                    r_init_armazenada_1_6 = retornador()
+                        #Modelo
+                        elif(estado_config == 13):
+                            def sel_tipo(t):
+                                if(t == "m") or (t == "M"):
+                                    return 1
+                                elif(t == "d") or (t == "D"):
+                                    return 2
+                                elif(t == "ad") or (t == "Ad") or (t == "AD"):
+                                    return 3
+                                elif(t == "sub") or (t == "Sub") or (t == "SUB"):
+                                    return 4
+                                elif(t == "ra") or (t == "Ra") or (t == "RA"):
+                                    return 5
+                            selecionar_tipo = sel_tipo(str(input("")))
+                            if(section_ciclo == 1):
+                                if(ciclo_1_1 == 2):
+                                    onda_1_1_t = selecionar_tipo
+                                elif(ciclo_1_2 == 2):
+                                    onda_1_2_t = selecionar_tipo
+                                elif(ciclo_1_3 == 2):
+                                    onda_1_3_t = selecionar_tipo
+                                elif(ciclo_1_4 == 2):
+                                    onda_1_4_t = selecionar_tipo
+                                elif(ciclo_1_5 == 2):
+                                    onda_1_5_t = selecionar_tipo
+                                elif(ciclo_1_6 == 2):
+                                    onda_1_6_t = selecionar_tipo
+                        #Finalização
+                        elif(estado_config == 14):
+                            ciclo_des = repet_ciclo_1_1+repet_ciclo_1_2+repet_ciclo_1_3+repet_ciclo_1_4 +repet_ciclo_1_5+repet_ciclo_1_6
+                            if(quant_dej_dir_1_1 != 0):
+                                ciclo_1_1 = 1
+                                ciclo_1_2 = 0
+                                ciclo_1_3 = 0
+                                ciclo_1_4 = 0
+                                ciclo_1_5 = 0
+                                ciclo_1_6 = 0
+                                depois = 1
+                            elif(quant_dej_dir_1_2 != 0):
+                                ciclo_1_1 = 0
+                                ciclo_1_2 = 1
+                                ciclo_1_3 = 0
+                                ciclo_1_4 = 0
+                                ciclo_1_5 = 0
+                                ciclo_1_6 = 0
+                                depois = 2
+                            elif(quant_dej_dir_1_3 != 0):
+                                ciclo_1_1 = 0
+                                ciclo_1_2 = 0
+                                ciclo_1_3 = 1
+                                ciclo_1_4 = 0
+                                ciclo_1_5 = 0
+                                ciclo_1_6 = 0
+                                depois = 3
+                            elif(quant_dej_dir_1_4 != 0):
+                                ciclo_1_1 = 0
+                                ciclo_1_2 = 0
+                                ciclo_1_3 = 0
+                                ciclo_1_4 = 1
+                                ciclo_1_5 = 0
+                                ciclo_1_6 = 0
+                                depois = 4
+                            elif(quant_dej_dir_1_5 != 0):
+                                ciclo_1_1 = 0
+                                ciclo_1_2 = 0
+                                ciclo_1_3 = 0
+                                ciclo_1_4 = 0
+                                ciclo_1_5 = 1
+                                ciclo_1_6 = 0
+                                depois = 5
+                            elif(quant_dej_dir_1_6 != 0):
+                                ciclo_1_1 = 0
+                                ciclo_1_2 = 0
+                                ciclo_1_3 = 0
+                                ciclo_1_4 = 0
+                                ciclo_1_5 = 0
+                                ciclo_1_6 = 1
+                                depois = 6
+                            configuracoes = 2
+                    else:
+                        if(comecar<0):
+                            print("Por favor, não insira valores negativos")
+                        elif not type(comecar) is int:
+                            print("Por favor, não insira qualquer besteira, e sim números de concreto, isto é, números concretos(inteiros e postivos) XD")
+                    estado_config = 1
                 entra = entra+1
             if(configuracoes == 2):
                 comecar = str(input(""))
+        if(comecar == "C") or (comecar == "c"):
+            ativador = 1
         #Execução   
-        if(comecar == "C") or (comecar == "c"):            
+        while(ativador == 1):
             ciclo = 0
             while(ciclo<ciclo_des):
-                depois = 1
                 contagem_esp_armazenamento = 0
                 #Comprimento
                 def onda_quant(quant):
@@ -595,6 +858,7 @@ while (reniciar != 1):
                             return rigth_armazenada_1_6
                 rigth_armazenada = onda_d(int())
                 #Relativa(?)
+                #Inicial
                 def onda_d_inicial(di):
                     if(ciclo_1_1 == 1):
                         return r_init_armazenada_1_1
@@ -657,21 +921,7 @@ while (reniciar != 1):
                         elif(ciclo_1_6 == 1):
                             return fator2_1_6 
                 fator2_armazenado = onda_fato2(int())
-                def onda_di(divisor):#Número divisor
-                    if(section_ciclo == 1):
-                        if(ciclo_1_1 == 1):
-                            return di_1_1
-                        elif(ciclo_1_2 == 1):
-                            return di_1_2
-                        elif(ciclo_1_3 == 1):
-                            return di_1_3
-                        elif(ciclo_1_4 == 1):
-                            return di_1_4
-                        elif(ciclo_1_5 == 1):
-                            return di_1_5
-                        elif(ciclo_1_6 == 1):
-                            return di_1_6
-                di_armazenado = onda_di(int())
+                #Suavidade
                 def onda_suave(su):
                     if(section_ciclo == 1):
                         if(ciclo_1_1 == 1):
@@ -687,6 +937,22 @@ while (reniciar != 1):
                         elif(ciclo_1_6 == 1):
                             return sua_1_6
                 pro_ro_armazenamento = onda_suave(int())
+                #Tipo
+                def onda_tipo(t):
+                    if(section_ciclo == 1):
+                        if(ciclo_1_1 == 1):
+                            return onda_1_1_t
+                        elif(ciclo_1_2 == 1):
+                            return onda_1_2_t
+                        elif(ciclo_1_3 == 1):
+                            return onda_1_3_t
+                        elif(ciclo_1_4 == 1):
+                            return onda_1_4_t
+                        elif(ciclo_1_5 == 1):
+                            return onda_1_5_t
+                        elif(ciclo_1_6 == 1):
+                            return onda_1_6_t
+                tipo_armazenado = onda_tipo(int())
                 #DS
                 if(modo_ds == 1):
                     print("Quant:", quant_armazenada, "\n", "R:", rigth_armazenada, "\n",  "E:", esp_armazenado,"\n", "Fatores", "\n", "1:", fator1_armazenado, "\n", "2:", fator2_armazenado)
@@ -703,6 +969,8 @@ while (reniciar != 1):
                             print("Onda 5")
                         elif(ciclo_1_6 == 1):
                             print("Onda 6")
+                #Tipo
+                tipo = tipo_armazenado
                 #Comprimento
                 quant_dej_dir = quant_armazenada
                 #Largura
@@ -719,85 +987,95 @@ while (reniciar != 1):
                 pro_ro = pro_ro_armazenamento
                 contagem_esp = 0
                 quant = 0
-                rigth = 0
-                rigth_tot = 9
+                rigth = 1
+                rigth_tot = 0
                 #X
                 X = fator1_armazenado
                 #Armazenadores
                 armazenador_x = 1
                 armazenador_x_2 = 0
-                #Sequência
                 #Coração do sistema
                 while(quant < quant_dej_dir):
                     #Onda
+                    #Altura total
+                    def r_t(rt):
+                        if(tipo == 1):
+                            return fator1*(fator2**rigth_armazenada)
+                        elif(tipo == 2):
+                            return rigth_desj
+                    rigth_tot = r_t(int())
                     #Proporção
-                    proporcao = float(rigth_desj/quant_dej_dir)
-                    #Flutuante
-                    if(n_flutuante == 1):
-                        proporcao = float(rigth_desj/quant_dej_dir)
-                    #Não fluante
-                    elif(n_flutuante == 0):
+                    def porpor(proporcao):
+                        if(tipo == 1):
+                            proporcao = rigth_desj/quant_dej_dir
+                        elif(tipo == 2):
+                            x = rigth_tot+1
+                            proporcao = 1
+                            rigth = 1
+                            while(x>rigth_tot):
+                                armazenador_xx = x
+                                x = fator1/(fator2**rigth*proporcao)
+                                proporcao = proporcao+1
+                                rigth = rigth+1
+                            proporcao = proporcao/quant_dej_dir
                         #Proporcão nomral|grande
                         if(proporcao >= 1):
-                                #Aproximação
-                                aproxi_b_d = int(proporcao)
-                                aproxi_a_d = int(proporcao)+1
-                                if(aproxi_a_d-proporcao < proporcao-aproxi_b_d):
-                                    if(modo_ds == 1):
-                                        print("1",aproxi_a_d-proporcao)
-                                    proporcao = aproxi_a_d
-                                elif(proporcao-aproxi_b_d < aproxi_a_d-proporcao):
-                                    if(modo_ds == 1):
-                                        print("2",proporcao-aproxi_b_d)
-                                    proporcao = aproxi_b_d
+                                if((proporcao-int(proporcao))*10>= 5):
+                                    return int(proporcao)+1
                                 else:
-                                    proporcao = int(proporcao)
-                                if(modo_ds == 1):
-                                    print("P" ,proporcao)
-                                    print("P+1", aproxi_a_d)
-                                    print("P-1", aproxi_b_d)
+                                    return int(proporcao)
                         #Proporção pequena
                         else:
-                            resto_prop = proporcao
-                            proporcao = int(1)
-                            resto = 1/resto_prop
-                            esp_des = esp_des*resto
-                            if(esp_des - int(esp_des) >=5):
-                                esp_des = esp_des+1
-                            else:
-                                esp_des = int(esp_des)
-                            if(modo_ds == 1):
-                                print("P", proporcao ,"Res", resto, "Esp", esp_des)
+                            return proporcao
+                    proporcao = porpor(int())
                     #Para proporção grande
                     if(rigth_armazenada>quant_dej_dir):
                         rigth_desj = quant_dej_dir
                     #Para proporção pequena
                     elif(quant_armazenada>rigth_armazenada):
                         quant_dej_dir = rigth_armazenada
+                    if(proporcao<1):
+                        resto_prop = proporcao
+                        proporcao = int(1)
+                        resto = 1/resto_prop
+                        esp_des = esp_des*resto
+                        if((esp_des - int(esp_des))*10 >=5):
+                            esp_des = int(esp_des)+1
+                        else:
+                            esp_des = int(esp_des)
+                        if(modo_ds == 1):
+                            print("P", proporcao ,"Res", resto, "Esp", esp_des)
+                    if(modo_ds == 1):
+                        print("P", proporcao)
                     #Valor inicial da altura
                     if(rigth_inical != 1):
                         fator21 = fator2
                     else:
                         fator21 = 1
-                    #Altura total
-                    rigth_tot = fator1*(fator2**rigth_armazenada)
-                    print("RT:", rigth_tot)
+                    if(modo_ds == 1):
+                        print("RT:", rigth_tot)
                     #Ondas
                     while(rigth <= rigth_desj) or (quant <= quant_dej_dir):
                         #X futuro
-                        armazenador_x_fut = (fator1*fator21**rigth_inical)*(fator2**((rigth+1)*proporcao))
-                        print("ARF:", armazenador_x_fut)
+                        def ar_fut(ff):
+                            if(tipo == 1):
+                                return (fator1*fator21**rigth_inical)*(fator2**((rigth+1) *proporcao))
+                            elif(tipo == 2):
+                                return fator1/(fator2**((rigth+1)*proporcao))
+                        armazenador_x_fut = ar_fut(int())
+                        if(modo_ds == 1):
+                             print("ARF:", armazenador_x_fut)
                         #Inicializador
                         if(quant<=0) and (rigth_inical == 1):
                             print(int(fator1))
                         #Ondinhas
                         def ondas(x):
-                            if(proporcao>=1):
+                            if(tipo == 1):
                                 if(rigth_desj>=rigth) and (armazenador_x_fut<=rigth_tot):
                                     if(modo_ds == 1):
                                         print("RD!")
                                     return (x*fator21**rigth_inical)*(fator2**(rigth*proporcao))
-                                elif(rigth_desj<=rigth):
+                                elif(rigth_desj<=rigth) and (armazenador_x_2>=rigth_tot):
                                     if(modo_ds == 1):
                                         print("RD2", rigth_desj)
                                     return armazenador_x_2
@@ -805,23 +1083,30 @@ while (reniciar != 1):
                                     if(modo_ds == 1):
                                         print("RT")
                                     return rigth_tot
-                        X = ondas(fator1)
-                        if(X != None):
-                            armazenador_x = X
+                            elif(tipo == 2):
+                                if(rigth<=rigth_desj) and (armazenador_x_fut>rigth_tot):
+                                    return x/(fator2**(proporcao*rigth))
+                                elif(armazenador_x_fut<rigth_tot) or (rigth_desj<=rigth):
+                                    return rigth_tot
+                            elif(tipo == 3):
+                                if(rigth<=rigth_desj):
+                                    return x+((fator2*proporcao))
+                        X = int(ondas(fator1))
+                        armazenador_x = X
                         armazenador_x_2 = armazenador_x
                         #Exibirdores
                         #Suave
                         if(pro_ro == 1):
-                            if(quant % esp_des == 0) and (quant!= 0) or (quant!= quant_dej_dir-1):
+                            if(quant % esp_des == 0) and (quant!= 0) or (quant!=   quant_dej_dir-1):
                                 esp = 0
                                 while(esp < esp_des):
                                     contagem_esp = 0
                                     if(modo_ds == 1):
-                                        print("Q", quant, "E", contagem_esp_armazenamento, X,  "\n", "Suave, sim")
+                                        print("Q", quant, "E", contagem_esp_armazenamento,X,"\n", "Suave, sim")
                                     else:
                                         print(X)
                                     contagem_esp = 1
-                                    contagem_esp_armazenamento = contagem_esp+contagem_esp_armazenamento
+                                    contagem_esp_armazenamento = contagem_esp  +contagem_esp_armazenamento
                                     esp = esp+1
                             else:
                                 if(modo_ds == 1):
@@ -850,6 +1135,8 @@ while (reniciar != 1):
                             armazenador_x = X
                             # print(armazenador_x)
                 ciclo = ciclo+1
+                #Redirecionador
+                #Ciclos
                 if(section_ciclo == 1):
                     #1
                     if(repetidor<=repet_ciclo_1_1) and (depois == 1):
@@ -863,6 +1150,22 @@ while (reniciar != 1):
                                 ciclo_1_1 = 0
                                 ciclo_1_2 = 1
                                 depois = 2
+                            elif(quant_dej_dir_1_3 != 0):
+                                ciclo_1_1 = 0
+                                ciclo_1_3 = 1
+                                depois= 3
+                            elif(quant_dej_dir_1_4 != 0):
+                                ciclo_1_1 = 0
+                                ciclo_1_4 = 1
+                                depois = 4
+                            elif(quant_dej_dir_1_5 != 0):
+                                ciclo_1_1 = 0
+                                ciclo_1_5 = 1
+                                depois = 5
+                            elif(quant_dej_dir_1_6 != 0):
+                                ciclo_1_1 = 0
+                                ciclo_1_6 = 1
+                                depois = 6
                             else:
                                 ciclo_1_1 = 1
                             repetidor = 0
@@ -874,10 +1177,18 @@ while (reniciar != 1):
                         if(repetidor == repet_ciclo_1_2):
                             if(quant_dej_dir_1_3 != 0):
                                 ciclo_1_3 = 1
-                                depois = 3
+                                depois= 3
+                            elif(quant_dej_dir_1_4 != 0):
+                                ciclo_1_4 = 1
+                                depois = 4
+                            elif(quant_dej_dir_1_5 != 0):
+                                ciclo_1_5 = 1
+                                depois = 5
+                            elif(quant_dej_dir_1_6 != 0):
+                                ciclo_1_6 = 1
+                                depois = 6
                             else:
                                 ciclo_1_1 = 1
-                                depois = 1
                             ciclo_1_2 = 0
                             repetidor = 0
                     #3
@@ -889,9 +1200,14 @@ while (reniciar != 1):
                             if(quant_dej_dir_1_4 != 0):
                                 ciclo_1_4 = 1
                                 depois = 4
+                            elif(quant_dej_dir_1_5 != 0):
+                                ciclo_1_5 = 1
+                                depois = 5
+                            elif(quant_dej_dir_1_6 != 0):
+                                ciclo_1_6 = 1
+                                depois = 6
                             else:
                                 ciclo_1_1 = 1
-                                depois = 1
                             ciclo_1_3 = 0
                             repetidor = 0
                     #4
@@ -903,9 +1219,11 @@ while (reniciar != 1):
                             if(quant_dej_dir_1_5 != 0):
                                 ciclo_1_5 = 1
                                 depois = 5
+                            elif(quant_dej_dir_1_6 != 0):
+                                ciclo_1_6 = 1
+                                depois = 6
                             else:
                                 ciclo_1_1 = 1
-                                depois = 1
                             ciclo_1_4 = 0
                             repetidor = 0
                     #5
@@ -919,7 +1237,6 @@ while (reniciar != 1):
                                 depois = 6
                             else:
                                 ciclo_1_1 = 1
-                                depois = 1
                             ciclo_1_5 = 0
                             repetidor = 0
                     #6
@@ -929,22 +1246,30 @@ while (reniciar != 1):
                         repetidor = repetidor+1
                         if(repetidor == repet_ciclo_1_4):
                             ciclo_1_1 = 1
-                            depois =1
+                            depois = 1
                             ciclo_1_6 = 0
                             repetidor = 0
+            #Seções
+            repetidor_se = repetidor_se+1
+            if(repetidor_se == repet_sectio_1) and (section_ciclo == 1):
+                ativador = 0
+            if(modo_ds == 1):
+                print("RepS", repet_sectio_1, "Repp", repetidor_se)
+            depois=1
         vezes = vezes+1
         print("V", vezes)
-        print("O", onda)
         text = 1
 #Coisas para mexer aqui:
-#1- Espaçamento, instável - Estável agora, check
-#2- Criar padrões com utilizando as section_ciclos
+#1- Espaçamento Estável- check
+#2- Criar padrões com utilizando as section_ciclos-  check
 #3- Criar outros tipos de ondas:
-#   Divisão
+#   Divisão - check
 #   Subtração
 #   Raízes
 #   Adição
-#   Exponenciação
+#   Exponeciação
 #4- Integra cálculo as ondas
-#5- Altura inicial personalisável - Fase de testes
+#5- Altura inicial personalisável - Check
 #6- Mensagens de introdução
+#7- Mensagens de aviso
+#8- Comjuntos de momórias [0,0,0,0,0,0,1]
