@@ -2,12 +2,18 @@ r = [0,1]
 c = 1
 for i  in r:
     def cal():
-        t = 0
+        t = 1
+        t_t = 0
+        t_m = 0
         n = []
         os = []
         x = [1,2]
         e = 1
         o_dis = ["+", "-", "*", "/", "p", "="]
+        est = 1
+        m_contador = -1
+        m_e = 1
+        m_s = 0
         for i in x:
             try:
                 n.append(float(input("N: ")))
@@ -57,50 +63,143 @@ for i  in r:
             # print(n)
             e += 1
         for i in os:
+            #Z
             if(e<1):
                 z = n[e]
             else:
                 z = n[e+1]
+            #Estado
+            if((e+1)<=len(os)-1):
+                if(os[e] == "+" or os[e] == "-") and (os[e+1] != "*" and os[e+1] != "/"):
+                    est = 1
+                    m = 2
+                elif(os[e+1] == "*" or os[e+1] == "/"):
+                    est = 2 
+                    m = 1
+                elif(e == 0):
+                    est = 2
+                    t = n[e+1]
+                    m = 1
+            else:
+                if(os[e] == "+" or os[e]== "-"):
+                    est = 1
+                    m = 2
+                else:
+                    est = 2
+                    m = 1
             #Adição
             if(os[e] == "+"):
-                if(e<1):
-                    t = z+n[e+1]
-                else:
-                    t = t+z
+                if(est == 1):
+                    if(e<1):
+                        t = z+n[e+1]
+                    else:
+                        t = z
             #Subtração
             elif(os[e] == "-"):
-                if(e<1):
-                    t = z-n[e+1]
-                else:
-                    t = t-z
-            elif(os[e] == "*"):
-                if(e>0):
-                    if(os[e-1] == "+"):
-                        t = (t-n[e])+(z*n[e])
-                    elif(os[e-1] == "-"):
-                        t = (t+n[e])-(z*n[e])
+                if(est == 1):
+                    if(e<1):
+                        t = z-n[e+1]
                     else:
-                        t = t*z
+                        t = -z
                 else:
-                    t = z*n[e+1]
-            else:
+                    t = n[e+1]*(-1)
+            #Multiplicação
+            elif(os[e] == "*"):
+                if(e+1<=len(os)-1):
+                    if(os[e+1] != "*" and "/"):
+                        if(m_e<=1):
+                            t = t*z
+                        else:
+                            if(m_s == 0):
+                                t = n[m_contador]+(t*z)
+                            else:
+                                t = t*z
+                        m_contador = -1
+                    else:
+                        if(e>0):
+                            t = t*z
+                        else:
+                            t = z*n[e+1]
+                else:
+                    if(e>0):
+                        t = n[m_contador]+(t*z)
+                    else:
+                        t = n[e+1]*z
+                        est = 1
+                    t_m = 0
+            #Divisão
+            elif(os[e] == "/"):
                 if(e>0):
                     if(os[e-1] == "+"):
-                        t = (t-n[e])+(n[e]/z)
+                        t = (t-n[e-1])+(n[e]/z)
                     elif(os[e-1] == "-"):
-                        t = (t+n[e])-(n[e]/z)
+                        t = (t+n[e-1])-(n[e]/z)
                     elif(os[e-1] == "*"):
-                        t = (t-(n[e]*n[e-1]))+(n[e-1]*(n[e]/z))
+                        if(os[e-2] != "*") and (os[e-2] != "/"):
+                            if(t<0):
+                                if(os[e-2] == "+"):
+                                    t = ((t+(n[e]*n[e-1]))+(n[e-1]*(n[e]/z)))
+                                else:
+                                    t = ((t+(n[e]*n[e-1]))-(n[e-1]*(n[e]/z)))
+                            else:
+                                if(os[e-2] == "+"):
+                                    t = ((t-(n*(n[e-1]))))+(n[e-1]*(n[e]/z))
+                                else:
+                                    t = ((t-(n*(n[e-1]))))-(n[e-1]*(n[e]/z))
+                        else:
+                            t = (t+(n[e]*n[e-1]*n[e-2]))+(n[e-2]*(n[e-1]*(n[e]/z)))
                     else:
                         t = t/z
                 else:
                     t = z/n[e+1]
             e += 1
-        print(t)
+            #Regulador
+            #ESt1
+            if(est == 1):
+                t_t = t+t_t+t_m
+                if(t == 1 and e==0):
+                    t = 0
+                else:
+                    t = 0
+                t_m = 0
+                if(e<=len(os)-1):
+                    if(os[e] != "+" or "-") and (m == 1):
+                        if(os[e-1] == "-") and (os[e+2] == "*" or "/"):
+                            t = -n[e+1]
+                        elif(os[e+2] == "*" or "/"):
+                            t = n[e+1]
+                        else:
+                            m_s = 2
+                        m_e = 0
+            #EST2
+            elif(est == 2):
+                t_m = t
+                m_e += 1
+                if(m_contador == -1):
+                    if(e+2<=len(os)-2):
+                        if(os[e+2] == "*" or "/") and (os[e-1] != "*" and os[e-1] != "/"):
+                            m_contador = e-1
+                            t = n[e]
+                        else:
+                            m_s = 1
+                            t = n[e+1]
+                    else:
+                        m_contador = e-1
+                    m_e == 0
+                if(e+1<=len(os)-1):
+                    if(os[e+1] != "*" or "/") and (m == 2):
+                        t = 0
+                        m = 0
+                        m_contador = -1
+                if(e == len(os)):
+                    t_t = t_m
+                elif(os[e] == "+" or os[e] == "-"):
+                    t_t = t_t+t_m
+        print(t_t)
         return t
     try:
         cal()
-    except ValueError:
+    except ValueError:  
         print("Por favor, coloque números, e não uma língua alienídena aos computadores!")
     except:
         print("O que você fez!!??")

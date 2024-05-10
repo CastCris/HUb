@@ -1497,13 +1497,5 @@ while (reniciar != 1):
             # print("V", vezes)
             text = 1
 #Coisas para mexer aqui:
-#1- Espaçamento Estável- check
-#2- Criar padrões com utilizando as section_ciclos-  check
-#3- Criar outros tipos de ondas:
-#   Divisão - check
-#   Raízes - check
-#   Exponeciação - check
 #4- Integra cálculo as ondas 
-#5- Altura inicial personalisável - Check
-#6- Mensagens de introdução
 #8- Otimização
