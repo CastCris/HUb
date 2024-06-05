@@ -196,5 +196,12 @@ if __name__ == '__main__':
                     dila += time.time()-t1
                 else: at = 0
             else: input("Por quê quer sair? "); break
-def crono_1(): return time.time()
-def crono_2(t): print(str(round(time.time()-t,2))+'s'); return 0 
+def time_init():global temp ; temp = time.time()
+def time_end(): print(str(round(time.time()-temp, 2))+'s'); return 0
+# import sys
+# from os.path import dirname, abspath
+# d = dirname(dirname(abspath(__file__)))
+# sys.path.append(d+'\\tp\\')
+# from tempo import *
+# """"
+# time_end()
