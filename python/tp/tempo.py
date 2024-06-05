@@ -5,7 +5,7 @@ if __name__ == '__main__':
     while True:
         try:
             if at == 0:
-                print("\n"," "*40,time.strftime("%H:%M do dia %d de %m de %Y", time.localtime()), "\n","O que procura?", "\n", "1- Cronômetro", "\n", "2- Temporizador","\n","3- Há quanto tempo..."); txt = None
+                print("\n"," "*40,time.strftime("%H:%M do dia %d de %m de %Y", time.localtime()), "\nO que procura?\n1- Cronômetro\n2- Temporizador\n3- Há quanto tempo..."); txt = None
                 txt = str(input())
                 se = 0; s = []; mex = 31; at = 0; dila = 0
             if txt == "1" or at == 1:
@@ -75,9 +75,8 @@ if __name__ == '__main__':
                         elif i == 4 and tt[i]>11: tt[i+1] += 1*(tt[i]//11);tt[i] -= 12*(tt[i]//11)
                     va = (t[len(t)-1]-time.time()); tt.reverse();prin = tt
                 #
-                while t[len(t)-1]>=time.time()-dila:
+                while t[len(t)-1]>=time.time()-dila-1:
                     if (time.time()-dila)>t[len(t)-1]-va:
-                        prin[5] -= 1
                         if prin[5]<0:
                             for i in range(len(prin)):
                                 if i<5:
@@ -98,10 +97,10 @@ if __name__ == '__main__':
                         for i in range(len(prin)):
                             if i<5: print(prin[i], end="/")
                             else: print(prin[i])
-                        va -= 1
-                winsound.PlaySound("plin", winsound.SND_FILENAME)
+                        va -= 1; prin[5] -= 1
+                winsound.PlaySound('plin.wav',winsound.SND_FILENAME)
             elif txt == "3":
-                print("Coloque alguma data seguindo o modelo:", "\n", "Horas:Minutos Dia Mês e Ano", "\n", "Nota: deve-se colocar a enumeração do mês ao invés de seu nome e não coloque um 1000>ano>9000 ", "\r")
+                print("Coloque alguma data seguindo o modelo:\nHoras:Minutos Dia Mês e Ano\nNota: deve-se colocar a enumeração do mês ao invés de seu nome e não coloque um 1000>ano>9000\r")
                 try:x = time.strptime(input(), "%H:%M %d %m %Y")
                 except: print("Uai, não sabe mais colocar data ou ler?")
                 print("\n","Então há...")
@@ -197,3 +196,5 @@ if __name__ == '__main__':
                     dila += time.time()-t1
                 else: at = 0
             else: input("Por quê quer sair? "); break
+def crono_1(): return time.time()
+def crono_2(t): print(str(round(time.time()-t,2))+'s'); return 0 
