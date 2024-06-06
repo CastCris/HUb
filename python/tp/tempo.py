@@ -1,5 +1,10 @@
 import time
 import winsound
+import sys
+from os.path import dirname, abspath
+d = dirname(dirname(abspath(__file__)))
+sys.path.append(d+'\\som\\')
+from random_sound import *
 t = [time.time()]; at = 0
 if __name__ == '__main__':
     while True:
@@ -36,7 +41,7 @@ if __name__ == '__main__':
                         try: tt.append(int(t[i]))
                         except: i = i
                         if len(tt)>5: break
-                    print(tt)
+                    # print(tt)
                     for i in range(6):
                         for j in range(tt[i]):
                             if i == 0:#Ano
@@ -98,7 +103,7 @@ if __name__ == '__main__':
                             if i<5: print(prin[i], end="/")
                             else: print(prin[i])
                         va -= 1; prin[5] -= 1
-                winsound.PlaySound('plin.wav',winsound.SND_FILENAME)
+                sound('%a', 'tp')
             elif txt == "3":
                 print("Coloque alguma data seguindo o modelo:\nHoras:Minutos Dia Mês e Ano\nNota: deve-se colocar a enumeração do mês ao invés de seu nome e não coloque um 1000>ano>9000\r")
                 try:x = time.strptime(input(), "%H:%M %d %m %Y")
