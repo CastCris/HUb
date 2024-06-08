@@ -203,6 +203,7 @@ if __name__ == '__main__':
             else: input("Por quê quer sair? "); break
 def time_init():global temp ; temp = time.time()
 def time_end(): print(str(round(time.time()-temp, 2))+'s'); return 0
+def time_now(): print(time.strftime('%H:%M/%d/%m/%y', time.localtime())); return time.strftime('%H:%M/%d/%m/%y', time.localtime())
 # import sys
 # from os.path import dirname, abspath
 # d = dirname(dirname(abspath(__file__)))
